@@ -1,0 +1,68 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
+
+const Footer = () => {
+  return (
+    <footer className="bg-gray-900 text-gray-300 mt-12">
+      <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        {/* Company Info */}
+        <div>
+          <h2 className="text-lg font-bold text-white">Kembove Enterprises</h2>
+          <p className="text-sm mt-2">Nairobi, Kenya</p>
+          <p className="text-sm mt-1">Building your vision with quality and trust.</p>
+        </div>
+
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-md font-semibold text-white mb-3">Quick Links</h3>
+          <ul className="space-y-2 text-sm">
+            <li><Link to="/" className="hover:text-yellow-500">Home</Link></li>
+            <li><Link to="/products" className="hover:text-yellow-500">Products</Link></li>
+            <li><Link to="/services" className="hover:text-yellow-500">Services</Link></li>
+            <li><Link to="/contact" className="hover:text-yellow-500">Contact</Link></li>
+          </ul>
+        </div>
+
+        {/* Social Media */}
+        <div>
+          <h3 className="text-md font-semibold text-white mb-3">Connect With Us</h3>
+          <div className="flex gap-4">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-yellow-500 transition"
+            >
+              <Facebook size={22} />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-yellow-500 transition"
+            >
+              <Instagram size={22} />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-yellow-500 transition"
+            >
+              <Linkedin size={22} />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-700 text-center py-4 text-sm text-gray-500">
+        © {new Date().getFullYear()} Kembove Enterprises. All rights reserved.
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
