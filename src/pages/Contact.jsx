@@ -148,7 +148,7 @@ const Contact = () => {
                     <Mail className="text-green-700 w-6 h-6 mt-1" />
                     <div>
                       <p className="font-semibold">Email</p>
-                      <p className="text-gray-600">contact@kambove-enterprises.com</p>
+                      <p className="text-gray-600">kamboveenterprises@gmail.com</p>
                       <p className="text-gray-500 text-sm">Online support 24/7</p>
                     </div>
                   </div>
@@ -198,9 +198,7 @@ const Contact = () => {
               Visit Our Locations
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto mb-10">
-              Find the nearest Kambove Enterprises location to you. Our showrooms
-              offer the same high-quality service and extensive product range with
-              modern designs focus.
+            Kambove Enterprises currently operates a branch in Eldoret, with plans to expand to more locations in the future. Visit us today and experience our high-quality service and wide range of modern design products
             </p>
             <div className="grid md:grid-cols-3 gap-8 text-left">
               {/* <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
