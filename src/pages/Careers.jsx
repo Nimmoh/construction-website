@@ -33,13 +33,13 @@ const Careers = () => {
           {/* Call-to-action buttons (from previous image) */}
           <div className="flex justify-center space-x-4 mb-20">
             <a
-              href="/open-positions"
+              href="#open-positions"
               className="bg-green-700 text-white font-semibold py-3 px-8 rounded-md shadow-lg hover:bg-green-800 transition-colors"
             >
               View Open Positions
             </a>
             <a
-              href="/our-culture"
+            href="#our-culture"
               className="bg-white text-gray-800 font-semibold py-3 px-8 rounded-md border border-gray-300 hover:bg-gray-50 transition-colors"
             >
               Learn About Our Culture
@@ -97,110 +97,89 @@ const Careers = () => {
           </div>
         </div>
       </section>
-
-      {/* Current Openings Section */}
-      <section className="bg-gray-100 py-16">
+        <section id="our-culture" className="bg-gray-200 py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            Current Openings
-          </h2>
-          <p className="text-gray-600 max-w-xl mx-auto mb-10">
-            Explore our current job opportunities and find the perfect role for your skills and career goals.
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Culture</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto mb-10">
+            At Kambove Enterprises, our culture is built on a foundation of respect, innovation, and a shared passion for what we do. We're more than just a team; we're a community.
           </p>
-
-          <div className="space-y-6">
-            {/* Job Listing Card 1 */}
-            <div className="bg-white p-6 rounded-lg shadow-md text-left">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">Sales Representative</h3>
-                  <div className="flex items-center space-x-2 text-sm text-gray-500 mb-4">
-                    <span className="bg-red-500 text-white px-2 py-0.5 rounded-full">Full-time</span>
-                    <span className="bg-green-700 text-white px-2 py-0.5 rounded-full">On-site</span>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <span className="text-gray-500 text-sm block">Experience</span>
-                  <span className="font-semibold text-gray-800">2-4 years</span>
-                </div>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Join our sales team to help construction professionals find the right materials for their projects.
+          <div className="grid md:grid-cols-3 gap-8 text-left">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="font-semibold text-lg text-green-700 mb-2">Empowerment & Trust</h3>
+              <p className="text-gray-600 text-sm">
+                We trust our team members to take ownership of their work and make decisions. We provide the tools and support you need to succeed.
               </p>
-              <p className="font-semibold text-gray-800 mb-2">Key Requirements:</p>
-              <ul className="list-disc list-inside text-gray-600 mb-4">
-                <li>Proven experience in sales</li>
-                <li>Strong communication skills</li>
-                <li>Customer-focused approach</li>
-              </ul>
-              <div className="flex space-x-4">
-                <a href="/contact" className="bg-green-700 text-white font-semibold py-2 px-6 rounded-md hover:bg-green-800 transition">Apply Now</a>
-                <a href="/learn-more" className="text-green-700 font-semibold py-2 px-6 rounded-md hover:underline transition">Learn More</a>
-              </div>
             </div>
-
-            {/* Job Listing Card 2 */}
-            <div className="bg-white p-6 rounded-lg shadow-md text-left">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">Warehouse Manager</h3>
-                  <div className="flex items-center space-x-2 text-sm text-gray-500 mb-4">
-                    <span className="bg-red-500 text-white px-2 py-0.5 rounded-full">Full-time</span>
-                    <span className="bg-green-700 text-white px-2 py-0.5 rounded-full">On-site</span>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <span className="text-gray-500 text-sm block">Experience</span>
-                  <span className="font-semibold text-gray-800">5+ years</span>
-                </div>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Oversee warehouse operations, inventory management, and team coordination.
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="font-semibold text-lg text-green-700 mb-2">Collaboration & Openness</h3>
+              <p className="text-gray-600 text-sm">
+                Our best ideas come from working together. We foster an environment where every voice is heard and new ideas are encouraged.
               </p>
-              <p className="font-semibold text-gray-800 mb-2">Key Requirements:</p>
-              <ul className="list-disc list-inside text-gray-600 mb-4">
-                <li>Warehouse management experience</li>
-                <li>Leadership skills</li>
-                <li>Logistics knowledge</li>
-              </ul>
-              <div className="flex space-x-4">
-                <a href="/contact" className="bg-green-700 text-white font-semibold py-2 px-6 rounded-md hover:bg-green-800 transition">Apply Now</a>
-                <a href="/learn-more" className="text-green-700 font-semibold py-2 px-6 rounded-md hover:underline transition">Learn More</a>
-              </div>
             </div>
-
-            {/* Job Listing Card 3 */}
-            <div className="bg-white p-6 rounded-lg shadow-md text-left">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">Technician Product Specialist</h3>
-                  <div className="flex items-center space-x-2 text-sm text-gray-500 mb-4">
-                    <span className="bg-red-500 text-white px-2 py-0.5 rounded-full">Full-time</span>
-                    <span className="bg-green-700 text-white px-2 py-0.5 rounded-full">On-site</span>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <span className="text-gray-500 text-sm block">Experience</span>
-                  <span className="font-semibold text-gray-800">3-5 years</span>
-                </div>
-              </div>
-              <p className="text-gray-600 mb-4">
-                Provide technical expertise and support to customers on construction materials.
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="font-semibold text-lg text-green-700 mb-2">Dedication to Quality</h3>
+              <p className="text-gray-600 text-sm">
+                We take pride in our work. Our commitment to excellence is reflected in every product we create and every service we provide.
               </p>
-              <p className="font-semibold text-gray-800 mb-2">Key Requirements:</p>
-              <ul className="list-disc list-inside text-gray-600 mb-4">
-                <li>Engineering background</li>
-                <li>Problem-solving capabilities</li>
-                <li>Strong technical knowledge</li>
-              </ul>
-              <div className="flex space-x-4">
-                <a href="/contact" className="bg-green-700 text-white font-semibold py-2 px-6 rounded-md hover:bg-green-800 transition">Apply Now</a>
-                <a href="/learn-more" className="text-green-700 font-semibold py-2 px-6 rounded-md hover:underline transition">Learn More</a>
-              </div>
             </div>
           </div>
         </div>
       </section>
+      <section id="open-positions" className="bg-white py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-10">Open Positions</h2>
+          <div className="space-y-6">
+            {/* Job Opening 1 */}
+            <div className="bg-gray-50 p-6 rounded-lg shadow-md text-left transition-transform hover:scale-[1.02]">
+              <div className="md:flex justify-between items-center">
+                <div>
+                  <h3 className="text-xl font-bold text-green-700">Project Manager</h3>
+                  <p className="text-sm text-gray-500">Full-time | Nairobi, Kenya</p>
+                </div>
+                <button className="mt-4 md:mt-0 bg-green-700 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-green-800 transition-colors">
+                  View Details
+                </button>
+              </div>
+              <p className="mt-4 text-gray-600">
+                Oversee project planning, execution, and delivery to ensure projects are completed on time and on budget.
+              </p>
+            </div>
+            
+            {/* Job Opening 2 */}
+            <div className="bg-gray-50 p-6 rounded-lg shadow-md text-left transition-transform hover:scale-[1.02]">
+              <div className="md:flex justify-between items-center">
+                <div>
+                  <h3 className="text-xl font-bold text-green-700">Construction Foreman</h3>
+                  <p className="text-sm text-gray-500">Full-time | On-site</p>
+                </div>
+                <button className="mt-4 md:mt-0 bg-green-700 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-green-800 transition-colors">
+                  View Details
+                </button>
+              </div>
+              <p className="mt-4 text-gray-600">
+                Lead and supervise on-site construction crews to maintain safety standards and project quality.
+              </p>
+            </div>
+            
+            {/* Job Opening 3 */}
+            <div className="bg-gray-50 p-6 rounded-lg shadow-md text-left transition-transform hover:scale-[1.02]">
+              <div className="md:flex justify-between items-center">
+                <div>
+                  <h3 className="text-xl font-bold text-green-700">Sales Representative</h3>
+                  <p className="text-sm text-gray-500">Full-time | Remote/Field</p>
+                </div>
+                <button className="mt-4 md:mt-0 bg-green-700 text-white font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-green-800 transition-colors">
+                  View Details
+                </button>
+              </div>
+              <p className="mt-4 text-gray-600">
+                Develop and manage client relationships, promoting our range of construction materials to a new customer base.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </>
   );
 };

@@ -15,22 +15,24 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6">
           <h1 className="text-5xl md:text-7xl font-extrabold leading-tight">
-            We Build <span className="text-orange-500">With Integrity</span>
+            Building Your <span className="text-orange-500">Vision Into Reality</span>
           </h1>
           <p className="mt-6 text-lg md:text-xl max-w-2xl">
-            Sustainable, reliable, and innovative construction solutions tailored
-            to your needs.
+            <br></br>
+            <b></b>
+Our innovation meets your vision. Let's create something remarkable, together.
+
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-full font-semibold text-white transition"
+              className="bg-green-600 hover:bg-green-700 px-8 py-3 rounded-md font-semibold text-white transition"
             >
               Book Appointment
             </Link>
             <Link
               to="/projects"
-              className="bg-orange-500 hover:bg-orange-600 px-8 py-3 rounded-full font-semibold text-white transition"
+              className="bg-orange-500 hover:bg-orange-600 px-8 py-3 rounded-md font-semibold text-white transition"
             >
               View Projects
             </Link>
@@ -49,12 +51,12 @@ const Home = () => {
               {
                 title: "Residential",
                 desc: "Custom homes, apartments, and luxury villas built with precision.",
-                img: "/images/construction_1.jpg", 
+                img: "/images/urban_housing.jpg", 
               },
               {
                 title: "Commercial",
                 desc: "Office spaces, retail outlets, and industrial buildings that stand out.",
-                img: "/images/construction_3.jpg", 
+                img: "/images/project3.jpg", 
               },
               {
                 title: "Renovations",
@@ -89,9 +91,10 @@ const Home = () => {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              "/images/project1.jpg", 
-              "/images/project2.jpg", 
-              "/images/project3.jpg", 
+              "/images/tiles.jpg", 
+              "/images/tiles3.jpg", 
+              "/images/tiles4.jpg", 
+              
             ].map((src, i) => (
               <div
                 key={i}
@@ -125,33 +128,30 @@ const Home = () => {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-              <Clock className="mx-auto text-green-700 w-12 h-12 mb-4" />
+              <CheckCircle className="mx-auto text-green-700 w-12 h-12 mb-4" />
               <h3 className="text-xl font-semibold text-green-700">
-                20+ Years Experience
+                Unmatched Attention to Detail
               </h3>
               <p className="text-gray-600 mt-2">
-                Trusted by clients for two decades, delivering excellence in
-                construction.
+                As a growing company, your project is our top priority. We provide a level of care and precision that bigger firms can't match.
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-              <CheckCircle className="mx-auto text-green-700 w-12 h-12 mb-4" />
+              <Clock className="mx-auto text-green-700 w-12 h-12 mb-4" />
               <h3 className="text-xl font-semibold text-green-700">
-                On-Time Delivery
+                On-Time & On-Budget
               </h3>
               <p className="text-gray-600 mt-2">
-                Projects completed as per schedule without compromising on
-                quality.
+                We're committed to transparent timelines and clear communication, ensuring your project is completed efficiently without hidden costs.
               </p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
               <Shield className="mx-auto text-green-700 w-12 h-12 mb-4" />
               <h3 className="text-xl font-semibold text-green-700">
-                Certified & Insured
+                Quality & Innovation
               </h3>
               <p className="text-gray-600 mt-2">
-                We comply with all safety standards and carry full liability
-                insurance.
+                We use the latest techniques and materials to ensure your build is not only beautiful and durable but also sustainable and future-proof.
               </p>
             </div>
           </div>
@@ -175,7 +175,7 @@ const Home = () => {
           </p>
           <Link
             to="/contact"
-            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-semibold transition"
+            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-md font-semibold transition"
           >
             Book an Appointment
           </Link>

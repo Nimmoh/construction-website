@@ -7,11 +7,9 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-lg bg-green-700 grid place-content-center text-white font-bold shadow">
-            KE
-          </div>
+          <img src="/images/logo.jpeg" alt="kambove Enterprises Logo" className="h-15 w-20" />
           <div className="font-semibold text-green-700 text-lg">
-            Kembove <span className="text-rose-600">Enterprises</span>
+            Kambove <span className="text-rose-600">Enterprises</span>
           </div>
         </Link>
 
@@ -31,9 +29,8 @@ const Navbar = () => {
             </NavLink>
           ))}
 
-          {/* Get a Quote Button */}
           <Link
-            to="/contact" 
+            to="/contact"
             className="ml-2 bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md font-medium shadow-md transition"
           >
             Get a Quote
@@ -80,7 +77,7 @@ const MobileMenu = () => {
             </NavLink>
           ))}
           <Link
-            to="/contact" 
+            to="/contact"
             onClick={() => setOpen(false)}
             className="mt-3 block text-center bg-green-700 text-white py-2 rounded hover:bg-green-800"
           >

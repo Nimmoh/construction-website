@@ -9,8 +9,8 @@ const Footer = () => {
         
         {/* Company Info */}
         <div>
-          <h2 className="text-lg font-bold text-white">Kembove Enterprises</h2>
-          <p className="text-sm mt-2">Nairobi, Kenya</p>
+          <h2 className="text-lg font-bold text-white">Kambove Enterprises</h2>
+          <p className="text-sm mt-2">Eldoret, Kenya</p>
           <p className="text-sm mt-1">Building your vision with quality and trust.</p>
         </div>
 
@@ -59,7 +59,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-700 text-center py-4 text-sm text-gray-500">
-        © {new Date().getFullYear()} Kembove Enterprises. All rights reserved.
+        © {new Date().getFullYear()} kambove Enterprises. 
       </div>
     </footer>
   );

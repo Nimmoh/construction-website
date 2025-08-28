@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   const team = [
     {
-      name: "John Mwangi",
+      name: "Anganya",
       role: "Founder & CEO",
       image: "/images/icon1.jpg", 
       bio: "A visionary leader with over 15 years in construction and project management.",
@@ -33,7 +33,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="text-center py-24 bg-white">
         <span className="bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-semibold tracking-wide">
-          About Kembove Enterprises
+          About Kambove Enterprises
         </span>
         <h1 className="mt-6 text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
           Building Excellence for{" "}
@@ -53,11 +53,8 @@ const About = () => {
         <div>
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
           <p className="text-gray-600 mb-6 leading-relaxed">
-            Founded in 2003, Kembove Enterprises began as a specialized
-            business focused on construction and supply of construction
-            materials. What started as a single warehouse has grown into a
-            comprehensive supplier specializing in aluminum doors and windows,
-            concrete blocks, paving blocks, and brick tiles.
+            Kambove Enterprises was founded with a singular vision: to revolutionize the construction and supply industry. Our founders saw a need for a partner that could provide both top-tier materials and exceptional service, all while embracing modern design and sustainable practices.
+
           </p>
           <p className="text-gray-600 leading-relaxed">
             Today, we serve thousands of contractors, builders, and construction
@@ -120,7 +117,7 @@ const About = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-3xl mx-auto text-center">
           <blockquote className="italic text-xl text-gray-600 leading-relaxed">
-            “Kembove Enterprises turned our vision into reality with professionalism and precision. 
+            “kambove Enterprises turned our vision into reality with professionalism and precision. 
             We couldn’t be happier with the results.”
           </blockquote>
           <p className="mt-4 text-green-700 font-semibold">— Happy Client, Nairobi</p>

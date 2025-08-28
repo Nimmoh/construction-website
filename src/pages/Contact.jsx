@@ -66,7 +66,7 @@ const Contact = () => {
                   </label>
                   <input
                     type="email"
-                    placeholder="your.email@example.com"
+                    placeholder="kamboveenterprises@gmail.com"
                     className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 transition"
                     required
                   />
@@ -77,7 +77,7 @@ const Contact = () => {
                   </label>
                   <input
                     type="tel"
-                    placeholder="+33 1 23 45 67 89"
+                    placeholder="+254 700 000 000"
                     className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 transition"
                   />
                 </div>
@@ -138,7 +138,7 @@ const Contact = () => {
                     <Phone className="text-green-700 w-6 h-6 mt-1" />
                     <div>
                       <p className="font-semibold">Phone</p>
-                      <p className="text-gray-600">+33 1 23 45 67 89</p>
+                      <p className="text-gray-600">+254714312234/ +254739044457</p>
                       <p className="text-gray-500 text-sm">
                         Mon - Sat: 09:00 - 18:00
                       </p>
@@ -157,9 +157,9 @@ const Contact = () => {
                     <div>
                       <p className="font-semibold">Head Office</p>
                       <p className="text-gray-600">
-                        123 Avenue de la République
+                        Eldoret, Kenya
                         <br />
-                        69003 Lyon, France
+
                       </p>
                     </div>
                   </div>
@@ -187,9 +187,7 @@ const Contact = () => {
                     <span className="font-medium text-red-500">Closed</span>
                   </div>
                 </div>
-                <p className="text-sm text-gray-500 mt-4">
-                  Emergency services available 24/7 for urgent projects.
-                </p>
+                
               </div>
             </div>
           </div>
@@ -205,26 +203,18 @@ const Contact = () => {
               modern designs focus.
             </p>
             <div className="grid md:grid-cols-3 gap-8 text-left">
-              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Lyon</h3>
-                <p className="text-gray-600">123 Avenue de la République</p>
-                <p className="text-gray-600">69003 Lyon, France</p>
+              {/* <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Eldoret</h3>
+                <p className="text-gray-600">Eldoret</p>
+                <p className="text-gray-600">Kenya</p>
                 <button className="bg-orange-500 text-white font-semibold text-sm px-4 py-1 rounded-full mt-4">
                   Head Office
                 </button>
-              </div>
+              </div> */}
 
-              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Paris</h3>
-                <p className="text-gray-600">456 Rue de Paris</p>
-                <p className="text-gray-600">75001 Paris, France</p>
-              </div>
+             
 
-              <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Marseille</h3>
-                <p className="text-gray-600">789 Boulevard Michelet</p>
-                <p className="text-gray-600">13008 Marseille, France</p>
-              </div>
+              
             </div>
           </div>
         </div>

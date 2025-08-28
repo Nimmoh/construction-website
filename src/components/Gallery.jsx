@@ -4,42 +4,43 @@ import { MapPin, Calendar } from "lucide-react";
 
 const Projects = () => {
   const stats = [
-    { value: "150+", label: "Projects" },
-    { value: "20+", label: "Years" },
-    // { value: "€15M+", label: "Value" },
-    { value: "98%", label: "Success" },
-  ];
+  { value: "150+", label: "Projects Completed" },
+  { value: "12", label: "New Clients This Year" },
+  { value: "98%", label: "Client Satisfaction" },
+];
 
-  const projects = [
+ const projects = [
+  {
+    title: "Modern Residential Complex",
+    desc: "Supply and installation of high-performance aluminum window and door systems to meet the modern design and energy efficiency requirements of the project.",
+    img: "/images/modern.jpg",
+  },
+  {
+    title: "Office Building Exterior Cladding",
+    desc: "Comprehensive material supply for the exterior of a commercial building, including glass facades and durable aluminum framing.",
+    img: "/images/offices.jpg",
+  },
+  {
+    title: "Residential Landscaping & Paving",
+    desc: "Provided premium paving blocks for the full landscape design of a residential property, focusing on long-term durability and aesthetic appeal.",
+    img: "/images/paving.jpg",
+  },
     {
-      title: "Modern Residential Complex - Phase 1",
-      // category: "Residential",
-      // price: "€450,000",
-      // location: "Lyon, France",
-      // date: "December 2023",
-      desc: "Complete supply of aluminum windows and doors for a luxury residential project.",
-      // Replaced with a public folder path
-      img: "/images/project4.jpg",
-    },
-    {
-      title: "Corporate Headquarters Building",
-      // category: "Commercial",
-      // price: "€750,000",
-      location: "Paris, France",
-      date: "September 2023",
-      desc: "Supply of materials for a 12-story office building with modern glass facades.",
-      img: "/images/project5.jpg",
-    },
-    {
-      title: "Luxury Villa Driveway & Landscaping",
-      // category: "Residential",
-      // price: "€85,000",
-      location: "Cannes, France",
-      date: "July 2023",
-      desc: "Premium paving blocks installation for driveway, pathways, and garden landscaping.",
-      img: "/images/project6.jpg",
-    },
-  ];
+    title: "Eco-Friendly Office Park",
+    desc: "Supplied over 15,000 brick tiles for a large-scale office park, contributing to its sustainable and modern design with a classic aesthetic.",
+    img: "/images/office_park.jpg",
+  },
+  {
+    title: "Urban Housing Development",
+    desc: "Provided all concrete blocks for a multi-building urban housing project, ensuring structural integrity and a streamlined construction timeline.",
+    img: "/images/urban_housing.jpg",
+  },
+  {
+    title: "Retail Center Renovation",
+    desc: "Custom-built and installed aluminum doors and windows for the full renovation of a retail center, enhancing natural light and security.",
+    img: "/images/renovation.jpg",
+  },
+];
 
   return (
     <section className="py-20 bg-white">

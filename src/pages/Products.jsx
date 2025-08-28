@@ -24,12 +24,32 @@ const Products = () => {
       stock: true,
     },
     {
-      title: "Construction Materials",
+      title: "Concrete Blocks",
       desc: " High-performance insulation material designed for modern construction. Engineered with sustainability and efficiency in mind, our product provides superior thermal performance, reduces energy costs, and contributes to a healthier indoor environment..",
-      img: "/images/product4.jpg",
+      img: "/images/block1.jpg",
       // price: "€165.00",
       // unit: "per window",
-      category: "Construction materials",
+      category: "Concrete Blocks",
+      // rating: 4.7,
+      stock: true,
+    },
+    {
+      title: "Tiles",
+      desc: " High-performance insulation material designed for modern construction. Engineered with sustainability and efficiency in mind, our product provides superior thermal performance, reduces energy costs, and contributes to a healthier indoor environment..",
+      img: "/images/tiles2.jpg",
+      // price: "€165.00",
+      // unit: "per window",
+      category: "tiles",
+      // rating: 4.7,
+      stock: true,
+    },
+    {
+      title: "Tandoor Stones",
+      desc: " High-performance insulation material designed for modern construction. Engineered with sustainability and efficiency in mind, our product provides superior thermal performance, reduces energy costs, and contributes to a healthier indoor environment..",
+      img: "/images/tandoor_stone.jpg",
+      // price: "€165.00",
+      // unit: "per window",
+      category: "tiles",
       // rating: 4.7,
       stock: true,
     },
@@ -86,7 +106,7 @@ const Products = () => {
                 />
                 {p.stock && (
                   <span className="absolute top-3 right-3 bg-orange-600 text-white text-xs font-semibold px-2 py-1 rounded">
-                    In Stock
+                    Available
                   </span>
                 )}
               </div>
@@ -112,9 +132,9 @@ const Products = () => {
                 </div>
 
                 {/* CTA */}
-                <button className="mt-5 w-full flex items-center justify-center bg-green-700 hover:bg-green-800 text-white py-2 rounded-md font-medium shadow transition">
+                {/* <button className="mt-5 w-full flex items-center justify-center bg-green-700 hover:bg-green-800 text-white py-2 rounded-md font-medium shadow transition">
                   <ShoppingCart className="w-4 h-4 mr-2" /> Add to Cart
-                </button>
+                </button> */}
               </div>
             </div>
           ))}
