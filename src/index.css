@@ -1,6 +1,13 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom light color scheme utilities */
+.bg-light-primary { background-color: #f0f9f4; }
+.bg-light-secondary { background-color: #f8fafc; }
+.bg-light-accent { background-color: #fff7ed; }
+.text-dark-green { color: #1a4a2f; }
+.text-light-gray { color: #64748b; }
 
 /* Simple lightbox styles for gallery */
 .lightbox {

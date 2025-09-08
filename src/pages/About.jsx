@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 
 const About = () => {
   const team = [
@@ -32,14 +32,14 @@ const About = () => {
     <>
       {/* Hero Section */}
       <section className="text-center py-24 bg-white">
-        <span className="bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-semibold tracking-wide">
+        <span className="bg-accent-100 text-accent-600 px-4 py-1 rounded-full text-sm font-semibold tracking-wide">
           About Kambove Enterprises
         </span>
-        <h1 className="mt-6 text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+        <h1 className="mt-6 text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
           Building Excellence for{" "}
-          <span className="text-green-700">Over 20 Years</span>
+          <span className="text-primary-700">Over 20 Years</span>
         </h1>
-        <p className="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
+        <p className="mt-6 max-w-3xl mx-auto text-lg text-slate-600">
           We are a business specialised in construction and supply of
           construction materials like aluminum doors and windows, concrete
           blocks, paving blocks and brick tiles, serving contractors and
@@ -48,104 +48,148 @@ const About = () => {
       </section>
 
       {/* Our Story Section */}
-      <section className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
-        {/* Text */}
-        <div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-          <p className="text-gray-600 mb-6 leading-relaxed">
-            Kambove Enterprises was founded with a singular vision: to revolutionize the construction and supply industry. Our founders saw a need for a partner that could provide both top-tier materials and exceptional service, all while embracing modern design and sustainable practices.
+      <section className="py-16 bg-primary-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid lg:grid-cols-3 gap-8 items-start">
+            {/* Text Content - Takes 2 columns */}
+            <div className="lg:col-span-2">
+              <h2 className="text-3xl font-bold text-primary-700 mb-6">
+                Our Story
+              </h2>
+              <div className="space-y-4">
+                <p className="text-slate-600 leading-relaxed">
+                At Kambove Enterprises, we are at the beginning of an exciting journey in the construction and building materials industry. Although we are a new player, our vision is clear, to provide quality products and dependable services that set a strong foundation for growth and trust.
 
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            Today, we serve thousands of contractors, builders, and construction
-            companies, from small residential projects to large commercial
-            developments. Our commitment to modern design, quality, and customer
-            service has made us a trusted partner in the construction industry.
-          </p>
-        </div>
+We understand that construction is more than just bricks and mortar; it is about creating spaces that serve communities, support businesses, and improve everyday living. That is why we are committed to sourcing and supplying durable, affordable, and reliable building materials while also offering construction services that meet the highest standards.
 
-        {/* Image */}
-        <div>
-          <img
-            src="/images/about_pic.jpg"
-            alt="Our Work"
-            className="rounded-xl shadow-lg object-cover"
-          />
-        </div>
-      </section>
-
-      {/* Mission & Vision */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-          <div className="p-8 bg-white rounded-xl shadow hover:shadow-md transition">
-            <h2 className="text-2xl font-bold text-green-700 mb-4">Our Mission</h2>
-            <p className="text-gray-600 leading-relaxed">
-              To transform ideas into tangible solutions through quality
-              craftsmanship, sustainable practices, and innovative designs.
-            </p>
-          </div>
-          <div className="p-8 bg-white rounded-xl shadow hover:shadow-md transition">
-            <h2 className="text-2xl font-bold text-green-700 mb-4">Our Vision</h2>
-            <p className="text-gray-600 leading-relaxed">
-              To be a trusted leader in construction across Africa, inspiring
-              progress and empowering communities through infrastructure.
-            </p>
+Our mission is to build lasting relationships with our clients, partners, and communities by consistently delivering value, integrity, and innovation in everything we do. As we take these first steps, we look forward to growing together with those who believe in our vision and being part of projects that truly make a difference.
+                </p>
+                <p className="text-slate-600 leading-relaxed">
+                  Over the years, we have successfully completed hundreds of projects,
+                  from residential homes to commercial buildings, always maintaining
+                  our commitment to quality, integrity, and customer satisfaction.
+                </p>
+                <p className="text-slate-600 leading-relaxed">
+                  Today, we continue to innovate and adapt to the changing needs of
+                  our clients while staying true to our core values of excellence
+                  and reliability.
+                </p>
+              </div>
+            </div>
+            
+            {/* Image - Takes 1 column */}
+            <div className="lg:col-span-1">
+              <div className="relative">
+                <img
+                  src="/images/about_pic.jpg"
+                  alt="Our construction team"
+                  className="w-full h-80 object-cover rounded-xl shadow-lg"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-700/20 to-transparent rounded-xl"></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Core Values */}
+      {/* Values Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-green-700 mb-10">Our Core Values</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {["Integrity", "Innovation", "Sustainability", "Customer Focus"].map(
-              (val, i) => (
-                <div
-                  key={i}
-                  className="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition"
-                >
-                  <h3 className="text-lg font-semibold text-orange-500">{val}</h3>
-                </div>
-              )
-            )}
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-primary-700 mb-12">
+            Our Core Values
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-primary-50 p-8 rounded-xl">
+              <div className="text-4xl mb-4"></div>
+              <h3 className="text-xl font-semibold text-primary-700 mb-3">
+                Quality First
+              </h3>
+              <p className="text-slate-600">
+                We never compromise on quality. Every project is executed with
+                precision and attention to detail.
+              </p>
+            </div>
+            <div className="bg-primary-50 p-8 rounded-xl">
+              <div className="text-4xl mb-4"></div>
+              <h3 className="text-xl font-semibold text-primary-700 mb-3">
+                Integrity
+              </h3>
+              <p className="text-slate-600">
+                We conduct business with honesty, transparency, and ethical
+                practices in all our dealings.
+              </p>
+            </div>
+            <div className="bg-primary-50 p-8 rounded-xl">
+              <div className="text-4xl mb-4"></div>
+              <h3 className="text-xl font-semibold text-primary-700 mb-3">
+                Innovation
+              </h3>
+              <p className="text-slate-600">
+                We embrace new technologies and methods to deliver better
+                results for our clients.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-3xl mx-auto text-center">
-          <blockquote className="italic text-xl text-gray-600 leading-relaxed">
-            “kambove Enterprises turned our vision into reality with professionalism and precision. 
-            We couldn’t be happier with the results.”
-          </blockquote>
-          <p className="mt-4 text-green-700 font-semibold">— Happy Client, Nairobi</p>
         </div>
       </section>
 
       {/* Team Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-extrabold text-center text-green-700 mb-12">
-            Meet Our Team
-          </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-primary-700 mb-4">
+              Meet Our Team
+            </h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              Our experienced team of professionals is dedicated to bringing
+              your vision to life with expertise and passion.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition flex flex-col items-center text-center"
-              >
+              <div key={index} className="bg-white p-6 rounded-xl shadow-lg text-center">
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-28 h-28 rounded-full object-cover mb-4 shadow"
+                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
                 />
-                <h3 className="text-lg font-bold text-orange-500">{member.name}</h3>
-                <p className="text-green-700 font-medium">{member.role}</p>
-                <p className="text-gray-600 mt-2 text-sm">{member.bio}</p>
+                <h3 className="text-lg font-semibold text-primary-700 mb-1">
+                  {member.name}
+                </h3>
+                <p className="text-accent-600 font-medium mb-3">{member.role}</p>
+                <p className="text-sm text-slate-600">{member.bio}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 bg-primary-700 text-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Our Achievements</h2>
+            <p className="text-primary-100 max-w-2xl mx-auto">
+              Numbers that speak to our commitment and success in the industry.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-bold text-accent-400 mb-2">500+</div>
+              <div className="text-primary-100">Projects Completed</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-accent-400 mb-2">20+</div>
+              <div className="text-primary-100">Years Experience</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-accent-400 mb-2">100%</div>
+              <div className="text-primary-100">Client Satisfaction</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-accent-400 mb-2">50+</div>
+              <div className="text-primary-100">Team Members</div>
+            </div>
           </div>
         </div>
       </section>
