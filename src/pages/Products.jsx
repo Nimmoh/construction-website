@@ -1,59 +1,14 @@
-import React from "react";
+import { React, useState } from "react";
 import { ShoppingCart, Search, SlidersHorizontal, Star } from "lucide-react";
+import products from "../products";
+import ProductCard from "../components/ProductCard";
 
 const Products = () => {
-  const products = [
-    {
-      title: "Aluminum Sliding Windows",
-      desc: "Premium aluminum sliding windows with double glazing and thermal break technology.",
-      img:"/images/aluminium.jpg", 
-      // price: "€185.00",
-      // unit: "per window",
-      category: "Aluminum Windows",
-      // rating: 4.9,
-      stock: true,
-    },
-    {
-      title: "Aluminum Entry Doors",
-      desc: "Modern aluminum entry doors with security features and energy efficiency.",
-      img: "/images/alum_doors.jpg",
-      // price: "€320.00",
-      // unit: "per door",
-      category: "Aluminum Doors",
-      // rating: 4.8,
-      stock: true,
-    },
-    {
-      title: "Concrete Blocks",
-      desc: " High-performance insulation material designed for modern construction. Engineered with sustainability and efficiency in mind, our product provides superior thermal performance, reduces energy costs, and contributes to a healthier indoor environment..",
-      img: "/images/block1.jpg",
-      // price: "€165.00",
-      // unit: "per window",
-      category: "Concrete Blocks",
-      // rating: 4.7,
-      stock: true,
-    },
-    {
-      title: "Tiles",
-      desc: " High-performance insulation material designed for modern construction. Engineered with sustainability and efficiency in mind, our product provides superior thermal performance, reduces energy costs, and contributes to a healthier indoor environment..",
-      img: "/images/tiles2.jpg",
-      // price: "€165.00",
-      // unit: "per window",
-      category: "tiles",
-      // rating: 4.7,
-      stock: true,
-    },
-    {
-      title: "Tandoor Stones",
-      desc: " High-performance insulation material designed for modern construction. Engineered with sustainability and efficiency in mind, our product provides superior thermal performance, reduces energy costs, and contributes to a healthier indoor environment..",
-      img: "/images/tandoor_stone.jpg",
-      // price: "€165.00",
-      // unit: "per window",
-      category: "tiles",
-      // rating: 4.7,
-      stock: true,
-    },
-  ];
+  const handleChange=(e)=>{
+    const currentOption=e.target.value
+      console.log("Current selected filter: ",currentOption)
+     
+  }
 
   return (
     <section className="py-20 bg-white">
@@ -79,65 +34,37 @@ const Products = () => {
               className="w-full outline-none text-gray-700"
             />
           </div>
-          <select className="px-4 py-2 rounded-md border border-gray-300 text-gray-600">
+          {
+            
+           
+          }
+
+          <select onChange={handleChange} className="px-4 py-2 rounded-md border border-gray-300 text-gray-600">
             <option>All Products</option>
-            <option>Windows</option>
+            <option >Windows</option>
             <option>Doors</option>
             <option>Blocks</option>
             <option>Tiles</option>
           </select>
           <button className="flex items-center px-4 py-2 rounded-md border border-gray-300 text-gray-600 hover:bg-gray-100">
-            <SlidersHorizontal className="w-4 h-4 mr-2" /> Advanced Filters
+            <SlidersHorizontal className="w-4 h-4 mr-2"/> Advanced Filters
           </button>
+         
         </div>
-
         {/* Product Cards */}
         <div className="grid md:grid-cols-3 gap-8">
-          {products.map((p, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-lg border shadow hover:shadow-md transition overflow-hidden"
-            >
-              <div className="relative">
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  className="h-56 w-full object-cover"
-                />
-                {p.stock && (
-                  <span className="absolute top-3 right-3 bg-orange-600 text-white text-xs font-semibold px-2 py-1 rounded">
-                    Available
-                  </span>
-                )}
+          {
+            products.map((product,index)=>{
+              return(
+                 <div
+                key={index}
+                className="bg-white rounded-lg border shadow hover:shadow-md transition overflow-hidden">
+                   <ProductCard product={product}/>
               </div>
-              <div className="p-5">
-                <h3 className="text-lg font-bold text-gray-900">{p.title}</h3>
-                <p className="text-green-700 font-semibold text-lg mt-1">
-                  {p.price}{" "}
-                  <span className="text-sm text-gray-500 font-normal">
-                    {p.unit}
-                  </span>
-                </p>
-                <p className="text-gray-600 mt-2 text-sm">{p.desc}</p>
-
-                {/* Rating + Category */}
-                <div className="flex items-center justify-between mt-4">
-                  <div className="flex items-center text-yellow-500 text-sm">
-                    <Star className="w-4 h-4 fill-current" />
-                    <span className="ml-1">{p.rating}</span>
-                  </div>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                    {p.category}
-                  </span>
-                </div>
-
-                {/* CTA */}
-                {/* <button className="mt-5 w-full flex items-center justify-center bg-green-700 hover:bg-green-800 text-white py-2 rounded-md font-medium shadow transition">
-                  <ShoppingCart className="w-4 h-4 mr-2" /> Add to Cart
-                </button> */}
-              </div>
-            </div>
-          ))}
+             
+              )
+            })
+          }
         </div>
       </div>
     </section>

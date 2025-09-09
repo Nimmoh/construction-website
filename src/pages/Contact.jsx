@@ -66,7 +66,7 @@ const Contact = () => {
                   </label>
                   <input
                     type="email"
-                    placeholder="kamboveenterprises@gmail.com"
+                    placeholder="info@kamboveenteprises.com"
                     className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 transition"
                     required
                   />
@@ -148,7 +148,7 @@ const Contact = () => {
                     <Mail className="text-green-700 w-6 h-6 mt-1" />
                     <div>
                       <p className="font-semibold">Email</p>
-                      <p className="text-gray-600">kamboveenterprises@gmail.com</p>
+                      <p className="text-gray-600">info@kamboveenteprises.com</p>
                       <p className="text-gray-500 text-sm">Online support 24/7</p>
                     </div>
                   </div>
