@@ -34,6 +34,94 @@ const Contact = () => {
                 Fill out the form below and we'll get back to you within 24 hours.
               </p>
               <ContactForm />
+              <form className="grid grid-cols-2 gap-x-4 gap-y-5">
+                <div className="col-span-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    First Name*
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter your first name"
+                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 transition"
+                    required
+                  />
+                </div>
+                <div className="col-span-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Last Name*
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter your last name"
+                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 transition"
+                    required
+                  />
+                </div>
+                <div className="col-span-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Email*
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="info@kamboveenteprises.com"
+                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 transition"
+                    required
+                  />
+                </div>
+                <div className="col-span-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="+254 700 000 000"
+                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 transition"
+                  />
+                </div>
+                <div className="col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Company
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Your company name"
+                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 transition"
+                  />
+                </div>
+                <div className="col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Subject*
+                  </label>
+                  <select
+                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 transition"
+                    required
+                  >
+                    <option>Select a subject</option>
+                    <option>General Inquiry</option>
+                    <option>Project Consultation</option>
+                    <option>Request a Quote</option>
+                  </select>
+                </div>
+                <div className="col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Message*
+                  </label>
+                  <textarea
+                    placeholder="Tell us about your project and how we can help..."
+                    rows="4"
+                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 transition"
+                    required
+                  ></textarea>
+                </div>
+                <div className="col-span-2">
+                  <button
+                    type="submit"
+                    className="w-full bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition"
+                  >
+                    Send Message
+                  </button>
+                </div>
+              </form>
             </div>
 
             {/* Contact Information */}
@@ -53,12 +141,12 @@ const Contact = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start">
-                    <Mail className="text-primary-700 w-6 h-6 mt-1" />
-                    <div className="ml-3">
-                      <p className="font-semibold text-slate-800">Email</p>
-                      <p className="text-slate-600">kamboveenterprises@gmail.com</p>
-                      <p className="text-slate-500 text-sm">Online support 24/7</p>
+                  <div className="flex items-start gap-4">
+                    <Mail className="text-green-700 w-6 h-6 mt-1" />
+                    <div>
+                      <p className="font-semibold">Email</p>
+                      <p className="text-gray-600">info@kamboveenteprises.com</p>
+                      <p className="text-gray-500 text-sm">Online support 24/7</p>
                     </div>
                   </div>
                   <div className="flex items-start">

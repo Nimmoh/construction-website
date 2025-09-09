@@ -1,84 +1,14 @@
-﻿import React, { useState } from "react";
-import { Search, Star, ShoppingCart } from "lucide-react";
+import { React, useState } from "react";
+import { ShoppingCart, Search, SlidersHorizontal, Star } from "lucide-react";
+import products from "../products";
+import ProductCard from "../components/ProductCard";
 
 const Products = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
-
-  const products = [
-    {
-      id: 1,
-      title: "Aluminum Windows",
-      price: "KSh 15,000",
-      originalPrice: "KSh 18,000",
-      desc: "High-quality aluminum windows with excellent durability and modern design.",
-      image: "/images/aluminium.jpg",
-      rating: 4.8,
-      reviews: 124,
-      category: "windows",
-      inStock: true,
-    },
-    {
-      id: 2,
-      title: "Concrete Blocks",
-      price: "KSh 45",
-      originalPrice: "KSh 50",
-      desc: "Standard concrete blocks perfect for construction projects.",
-      image: "/images/block1.jpg",
-      rating: 4.6,
-      reviews: 89,
-      category: "materials",
-      inStock: true,
-    },
-    {
-      id: 3,
-      title: "Paving Blocks",
-      price: "KSh 120",
-      originalPrice: "KSh 140",
-      desc: "Decorative paving blocks for driveways and walkways.",
-      image: "/images/paving.jpg",
-      rating: 4.7,
-      reviews: 67,
-      category: "materials",
-      inStock: true,
-    },
-    {
-      id: 4,
-      title: "Brick Tiles",
-      price: "KSh 80",
-      originalPrice: "KSh 95",
-      desc: "Traditional brick tiles for authentic construction look.",
-      image: "/images/tiles.jpg",
-      rating: 4.5,
-      reviews: 45,
-      category: "materials",
-      inStock: false,
-    },
-    {
-      id: 5,
-      title: "Aluminum Doors",
-      price: "KSh 25,000",
-      originalPrice: "KSh 30,000",
-      desc: "Premium aluminum doors with security features.",
-      image: "/images/alum_doors.jpg",
-      rating: 4.9,
-      reviews: 156,
-      category: "doors",
-      inStock: true,
-    },
-    {
-      id: 6,
-      title: "Steel Frames",
-      price: "KSh 8,500",
-      originalPrice: "KSh 10,000",
-      desc: "Heavy-duty steel frames for structural support.",
-      image: "/images/product1.jpg",
-      rating: 4.4,
-      reviews: 78,
-      category: "materials",
-      inStock: true,
-    },
-  ];
+  const handleChange=(e)=>{
+    const currentOption=e.target.value
+      console.log("Current selected filter: ",currentOption)
+     
+  }
 
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -104,38 +34,49 @@ const Products = () => {
           </p>
         </div>
       </section>
+      <section>
 
-      {/* Search and Filter Section */}
-      <section className="bg-white py-8">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="bg-slate-50 rounded-lg p-6 mb-12 flex flex-col md:flex-row gap-4 md:items-center justify-between shadow-sm">
-            <div className="flex-1 flex items-center bg-white rounded-md shadow px-4 py-2">
-              <Search className="text-slate-400 w-5 h-5 mr-2" />
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full outline-none text-slate-700"
-              />
-            </div>
-            <div className="flex gap-4">
-              <select 
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-2 rounded-md border border-slate-300 text-slate-600"
-              >
-                <option value="all">All Categories</option>
-                <option value="doors">Doors</option>
-                <option value="windows">Windows</option>
-                <option value="materials">Materials</option>
-              </select>
-              <button className="flex items-center px-4 py-2 rounded-md border border-slate-300 text-slate-600 hover:bg-slate-100">
-                <ShoppingCart className="w-4 h-4 mr-2" />
-                Cart (0)
-              </button>
-            </div>
+        {/* Filters */}
+        <div className="bg-gray-50 rounded-lg p-6 mb-12 flex flex-col md:flex-row gap-4 md:items-center justify-between shadow-sm">
+          <div className="flex-1 flex items-center bg-white rounded-md shadow px-4 py-2">
+            <Search className="text-gray-400 w-5 h-5 mr-2" />
+            <input
+              type="text"
+              placeholder="Search products..."
+              className="w-full outline-none text-gray-700"
+            />
           </div>
+          {
+            
+           
+          }
+
+          <select onChange={handleChange} className="px-4 py-2 rounded-md border border-gray-300 text-gray-600">
+            <option>All Products</option>
+            <option >Windows</option>
+            <option>Doors</option>
+            <option>Blocks</option>
+            <option>Tiles</option>
+          </select>
+          <button className="flex items-center px-4 py-2 rounded-md border border-gray-300 text-gray-600 hover:bg-gray-100">
+            <SlidersHorizontal className="w-4 h-4 mr-2"/> Advanced Filters
+          </button>
+         
+        </div>
+        {/* Product Cards */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {
+            products.map((product,index)=>{
+              return(
+                 <div
+                key={index}
+                className="bg-white rounded-lg border shadow hover:shadow-md transition overflow-hidden">
+                   <ProductCard product={product}/>
+              </div>
+             
+              )
+            })
+          }
         </div>
       </section>
 
