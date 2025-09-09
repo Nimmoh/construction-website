@@ -105,7 +105,7 @@ Our innovation meets your vision. Let's create something remarkable, together.
             ))}
           </div>
           <Link
-            to="/gallery"
+            to="/projects"
             className="inline-block mt-6 text-accent-600 font-semibold hover:underline"
           >
             View All Projects 

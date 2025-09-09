@@ -30,10 +30,10 @@ const Navbar = () => {
           ))}
 
           <Link
-            to="/contact"
+            to="https://wa.me/+254714312234"
             className="ml-2 bg-primary-700 hover:bg-primary-800 text-white px-4 py-2 rounded-md font-medium shadow-md transition"
           >
-            Get a Quote
+         WhatsApp 
           </Link>
         </nav>
 
