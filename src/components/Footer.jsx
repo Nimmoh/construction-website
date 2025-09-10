@@ -1,10 +1,10 @@
-import React from "react";
+﻿import React from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 mt-12">
+    <footer className="bg-primary-800 text-slate-200 mt-12">
       <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         
         {/* Company Info */}
@@ -18,10 +18,10 @@ const Footer = () => {
         <div>
           <h3 className="text-md font-semibold text-white mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/" className="hover:text-yellow-500">Home</Link></li>
-            <li><Link to="/products" className="hover:text-yellow-500">Products</Link></li>
-            <li><Link to="/services" className="hover:text-yellow-500">Services</Link></li>
-            <li><Link to="/contact" className="hover:text-yellow-500">Contact</Link></li>
+            <li><Link to="/" className="hover:text-accent-400">Home</Link></li>
+            <li><Link to="/products" className="hover:text-accent-400">Products</Link></li>
+            <li><Link to="/services" className="hover:text-accent-400">Services</Link></li>
+            <li><Link to="/contact" className="hover:text-accent-400">Contact</Link></li>
           </ul>
         </div>
 
@@ -33,7 +33,7 @@ const Footer = () => {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-yellow-500 transition"
+              className="hover:text-accent-400 transition"
             >
               <Facebook size={22} />
             </a>
@@ -41,7 +41,7 @@ const Footer = () => {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-yellow-500 transition"
+              className="hover:text-accent-400 transition"
             >
               <Instagram size={22} />
             </a>
@@ -49,7 +49,7 @@ const Footer = () => {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-yellow-500 transition"
+              className="hover:text-accent-400 transition"
             >
               <Linkedin size={22} />
             </a>
@@ -58,8 +58,8 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-700 text-center py-4 text-sm text-gray-500">
-        © {new Date().getFullYear()} kambove Enterprises. 
+      <div className="border-t border-slate-600 text-center py-4 text-sm text-slate-400">
+         {new Date().getFullYear()} kambove Enterprises. 
       </div>
     </footer>
   );

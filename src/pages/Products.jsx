@@ -1,73 +1,114 @@
-import { React, useState } from "react";
+﻿import React, { useState } from "react";
 import { ShoppingCart, Search, SlidersHorizontal, Star } from "lucide-react";
 import products from "../products";
 import ProductCard from "../components/ProductCard";
+import SearchBar from "../components/SearchBar";
+
 
 const Products = () => {
-  const handleChange=(e)=>{
-    const currentOption=e.target.value
-      console.log("Current selected filter: ",currentOption)
-     
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchSubmitted,setSearchSubmitted] = useState(false)
+
+
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         product.desc.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+//Updates the searchBar
+ function handleChange(event){
+        const search = event.target.value
+        setSearchTerm(previousSearch =>{
+            return (
+                previousSearch,
+                search
+            )
+            
+            
+        })
+        
+    }
+    //Function to handle the enter button
+     function handleSearchClick() {
+       if (searchTerm.trim() !== "") {
+    setSearchSubmitted(true)
+    setSearchTerm(searchTerm);
+  }
+      // console.log("^^^^^^^^^^^>>>>>>",searchTerm)
   }
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Heading */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-900">
-            Our <span className="text-green-700">Product Range</span>
+    <>
+      {/* Hero Section */}
+      <section className="bg-primary-50 py-16">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <p className="text-sm font-semibold text-accent-600 uppercase mb-2">
+            Quality Construction Materials
+          </p>
+          <h1 className="text-4xl font-extrabold text-slate-900">
+            Our <span className="text-primary-700">Product Range</span>
           </h1>
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-            Specialized in aluminum doors & windows, concrete blocks, paving blocks,
-            and brick tiles. Quality materials for all your construction needs.
+          <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
+            Discover our comprehensive range of high-quality construction materials
+            and building supplies, sourced from trusted manufacturers.
           </p>
         </div>
+      </section>
 
-        {/* Filters */}
-        <div className="bg-gray-50 rounded-lg p-6 mb-12 flex flex-col md:flex-row gap-4 md:items-center justify-between shadow-sm">
-          <div className="flex-1 flex items-center bg-white rounded-md shadow px-4 py-2">
-            <Search className="text-gray-400 w-5 h-5 mr-2" />
-            <input
-              type="text"
-              placeholder="Search products..."
-              className="w-full outline-none text-gray-700"
-            />
-          </div>
-          {
-            
+      {/* Search and Filter Section */}
+      <section className="bg-white py-8">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="bg-slate-50 rounded-lg p-6 mb-12 flex flex-col md:flex-row gap-4 md:items-center justify-between shadow-sm">
+               <SearchBar
+              searchTerm={searchTerm}
+              searchType="text"
+              handleChange={handleChange}
+              handleSearchClick={()=>{handleSearchClick()}}
+
+              />
            
-          }
+            
+            <div className="flex gap-4">
+              <select 
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="px-4 py-2 rounded-md border border-slate-300 text-slate-600"
+              >
+                <option value="all">All Categories</option>
+                <option value="doors">Doors</option>
+                <option value="windows">Windows</option>
+                <option value="materials">Materials</option>
+              </select>
+              {/* <button className="flex items-center px-4 py-2 rounded-md border border-slate-300 text-slate-600 hover:bg-slate-100">
+                <ShoppingCart className="w-4 h-4 mr-2" />
+                Cart (0)
+              </button> */}
+            </div>
+          </div>
+          </div>
+       
+      </section>
 
-          <select onChange={handleChange} className="px-4 py-2 rounded-md border border-gray-300 text-gray-600">
-            <option>All Products</option>
-            <option >Windows</option>
-            <option>Doors</option>
-            <option>Blocks</option>
-            <option>Tiles</option>
-          </select>
-          <button className="flex items-center px-4 py-2 rounded-md border border-gray-300 text-gray-600 hover:bg-gray-100">
-            <SlidersHorizontal className="w-4 h-4 mr-2"/> Advanced Filters
-          </button>
-         
-        </div>
-        {/* Product Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+      {/* Products Cards */}
+      <section className="py-12 bg-white">
+         <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {
-            products.map((product,index)=>{
+            filteredProducts.map((product)=>{
               return(
-                 <div
-                key={index}
-                className="bg-white rounded-lg border shadow hover:shadow-md transition overflow-hidden">
+                 <div key={product.id} className="bg-white border border-slate-200 rounded-xl shadow-lg hover:shadow-xl transition overflow-hidden">
                    <ProductCard product={product}/>
               </div>
              
               )
             })
           }
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
