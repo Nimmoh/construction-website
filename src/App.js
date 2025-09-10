@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Careers from './pages/Careers';
 import Booking from './components/Booking';
 import Gallery from './components/Gallery';
+import WhatsAppButton from './components/ui/WhatsAppButton';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/projects" element={<Gallery />} />
         </Routes>
       </main>
+      <WhatsAppButton />
       <Footer />
     </div>
   );
