@@ -59,7 +59,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-slate-600 text-center py-4 text-sm text-slate-400">
-         {new Date().getFullYear()} kambove Enterprises. 
+          &copy; {new Date().getFullYear()} kambove Enterprises, Inc. All rights reserved. 
       </div>
     </footer>
   );
