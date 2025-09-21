@@ -1,23 +1,44 @@
 ﻿import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
 
 const ContactForm = ()=> {
-  const [form, setForm] = useState({ name:'', email:'', phone:'', message:'' });
+  const [form, setForm] = useState({ name:'', email:'', phone:'', message:'', subject:'' });
   const [status, setStatus] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e)=> setForm({...form, [e.target.name]: e.target.value});
 
   const handleSubmit = async (e)=> {
     e.preventDefault();
-    const SERVICE_ID = 'YOUR_SERVICE_ID';
-    const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-    const USER_ID = 'YOUR_USER_ID';
+    setLoading(true);
+    setStatus('');
+    
     try {
-      await emailjs.send(SERVICE_ID, TEMPLATE_ID, form, USER_ID);
-      setStatus('sent');
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject || 'Contact Form Submission',
+          message: form.message
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('sent');
+        setForm({ name:'', email:'', phone:'', message:'', subject:'' }); // Reset form
+      } else {
+        setStatus('error');
+      }
     } catch (err) {
-      console.error(err);
+      console.error('Error sending message:', err);
       setStatus('error');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,6 +85,18 @@ const ContactForm = ()=> {
       </div>
       <div>
         <label className="block text-sm font-medium text-slate-700 mb-1">
+          Subject
+        </label>
+        <input 
+          name="subject" 
+          placeholder="Enter subject" 
+          value={form.subject} 
+          onChange={handleChange} 
+          className="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500" 
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-slate-700 mb-1">
           Project Type
         </label>
         <select className="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
@@ -100,11 +133,15 @@ const ContactForm = ()=> {
           className="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
         ></textarea>
       </div>
-      <button className="w-full bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-800 transition">
-        Send Message
+      <button 
+        type="submit"
+        disabled={loading}
+        className="w-full bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {loading ? 'Sending...' : 'Send Message'}
       </button>
-      {status==='sent' && <p className="mt-3 text-green-600 text-center">Message sent  thank you!</p>}
-      {status==='error' && <p className="mt-3 text-red-600 text-center">Error sending message.</p>}
+      {status==='sent' && <p className="mt-3 text-green-600 text-center">Message sent successfully! Thank you!</p>}
+      {status==='error' && <p className="mt-3 text-red-600 text-center">Error sending message. Please try again.</p>}
     </form>
   );
 };
