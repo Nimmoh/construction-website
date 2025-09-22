@@ -47,18 +47,18 @@ const Contact = () => {
                     <Phone className="text-primary-700 w-6 h-6 mt-1" />
                     <div className="ml-3">
                       <p className="font-semibold text-slate-800">Phone</p>
-                      <p className="text-slate-600">+254714312234/ +254739044457</p>
+                      <p className="text-slate-600">+254739044457 +254714312234 </p>
                       <p className="text-slate-500 text-sm">
                         Available 8:00 AM - 6:00 PM
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start">
-                    <Mail className="text-primary-700 w-6 h-6 mt-1" />
-                    <div className="ml-3">
-                      <p className="font-semibold text-slate-800">Email</p>
-                      <p className="text-slate-600">kamboveenterprises@gmail.com</p>
-                      <p className="text-slate-500 text-sm">Online support 24/7</p>
+                  <div className="flex items-start gap-4">
+                    <Mail className="text-green-700 w-6 h-6 mt-1" />
+                    <div>
+                      <p className="font-semibold">Email</p>
+                      <p className="text-gray-600">info@kamboveenteprises.com</p>
+                      <p className="text-gray-500 text-sm">Online support 24/7</p>
                     </div>
                   </div>
                   <div className="flex items-start">

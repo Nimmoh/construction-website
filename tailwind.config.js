@@ -27,7 +27,19 @@
           800: "#9a3412",
           900: "#7c2d12",
         }
-      }
+      },
+      // Custom Whatsapp animate
+      animation: {
+        'ping-delay-3s': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite 2s', // 2s delay added here
+      },
+       keyframes: { // Keyframes for the ping animation
+        ping: {
+          '75%, 100%': {
+            transform: 'scale(2)',
+            opacity: '0',
+          },
+        },
+      },
     },
   },
   plugins: [],

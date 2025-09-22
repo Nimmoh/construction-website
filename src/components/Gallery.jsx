@@ -1,7 +1,9 @@
 ﻿import React from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Calendar } from "lucide-react";
-
+import projects from "../projects";
+import ProjectCard from "../components/ProjectCard"
+ 
 const Projects = () => {
   const stats = [
   { value: "150+", label: "Projects Completed" },
@@ -9,38 +11,6 @@ const Projects = () => {
   { value: "98%", label: "Client Satisfaction" },
 ];
 
- const projects = [
-  {
-    title: "Modern Residential Complex",
-    desc: "Supply and installation of high-performance aluminum window and door systems to meet the modern design and energy efficiency requirements of the project.",
-    img: "/images/modern.jpg",
-  },
-  {
-    title: "Office Building Exterior Cladding",
-    desc: "Comprehensive material supply for the exterior of a commercial building, including glass facades and durable aluminum framing.",
-    img: "/images/offices.jpg",
-  },
-  {
-    title: "Residential Landscaping & Paving",
-    desc: "Provided premium paving blocks for the full landscape design of a residential property, focusing on long-term durability and aesthetic appeal.",
-    img: "/images/paving.jpg",
-  },
-    {
-    title: "Eco-Friendly Office Park",
-    desc: "Supplied over 15,000 brick tiles for a large-scale office park, contributing to its sustainable and modern design with a classic aesthetic.",
-    img: "/images/office_park.jpg",
-  },
-  {
-    title: "Urban Housing Development",
-    desc: "Provided all concrete blocks for a multi-building urban housing project, ensuring structural integrity and a streamlined construction timeline.",
-    img: "/images/urban_housing.jpg",
-  },
-  {
-    title: "Retail Center Renovation",
-    desc: "Custom-built and installed aluminum doors and windows for the full renovation of a retail center, enhancing natural light and security.",
-    img: "/images/renovation.jpg",
-  },
-];
 
   return (
     <section className="py-20 bg-white">
@@ -70,39 +40,9 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, i) => (
-            <div key={i} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
-              <div className="relative">
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="absolute inset-0 bg-primary-700/20 opacity-0 hover:opacity-100 transition flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-                    <p className="text-sm">View Details</p>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-slate-800 mb-3">
-                  {project.title}
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  {project.desc}
-                </p>
-                <div className="mt-4 flex items-center justify-between">
-                  <div className="flex items-center text-slate-500 text-sm">
-                    <MapPin className="w-4 h-4 mr-1" />
-                    <span>Eldoret, Kenya</span>
-                  </div>
-                  <div className="flex items-center text-slate-500 text-sm">
-                    <Calendar className="w-4 h-4 mr-1" />
-                    <span>2024</span>
-                  </div>
-                </div>
-              </div>
+          {projects.map((project, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
+              <ProjectCard project={project} />
             </div>
           ))}
         </div>
