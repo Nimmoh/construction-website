@@ -65,7 +65,7 @@ We understand that construction is more than just bricks and mortar; it is about
 Our mission is to build lasting relationships with our clients, partners, and communities by consistently delivering value, integrity, and innovation in everything we do. As we take these first steps, we look forward to growing together with those who believe in our vision and being part of projects that truly make a difference.
                 </p>
                 <p className="text-slate-600 leading-relaxed">
-                  Over the years, we have successfully completed hundreds of projects,
+                  Over the years, we have successfully completed various projects,
                   from residential homes to commercial buildings, always maintaining
                   our commitment to quality, integrity, and customer satisfaction.
                 </p>

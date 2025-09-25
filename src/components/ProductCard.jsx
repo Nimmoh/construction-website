@@ -40,7 +40,7 @@ export default function ProductCard({product}){
 
                 {/* Rating + Category */}
                 
-                <div className="flex items-center mt-4">
+                {/* <div className="flex items-center mt-4">
                   <div className="flex items-center text-accent-500 text-sm">
                     <Star className="w-4 h-4 fill-current" />
                     <span className="ml-1">{product.rating}</span>
@@ -48,7 +48,7 @@ export default function ProductCard({product}){
                   <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded ml-2">
                     {product.reviews} reviews
                   </span>
-                </div>
+                </div> */}
 
                 {/* CTA */}
                  {/* <button className="mt-5 w-full flex items-center justify-center bg-green-700 hover:bg-green-800 text-white py-2 rounded-md font-medium shadow transition">
