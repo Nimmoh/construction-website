@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "emailjs-com": "^3.2.0",
+    "express": "^5.1.0",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.544.0",
     "nodemailer": "^7.0.6",
