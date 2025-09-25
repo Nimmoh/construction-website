@@ -1,8 +1,15 @@
-const nodemailer = require('nodemailer');
 
-// Create transporter for sending emails
 const createTransporter = () => {
-  return nodemailer.createTransporter({
+  const nodemailer = require('nodemailer');
+
+  console.log('Creating nodemailer transporter with config:', {
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT) || 587,
+    secure: process.env.SMTP_SECURE === 'true',
+    user: process.env.SMTP_USER ? '***' : 'MISSING'
+  });
+
+  return nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: parseInt(process.env.SMTP_PORT) || 587,
     secure: process.env.SMTP_SECURE === 'true',
@@ -10,11 +17,13 @@ const createTransporter = () => {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
+    tls: {
+      rejectUnauthorized: false
+    }
   });
 };
 
-export default async function handler(req, res) {
-  // Set CORS headers
+module.exports = async function handler(req, res) {
   const allowedOrigins = process.env.ALLOWED_ORIGINS 
     ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
     : ['http://localhost:3000', 'https://construction-website-black.vercel.app'];
@@ -28,13 +37,11 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
-  // Handle preflight requests
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
   }
 
-  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({
       success: false,
@@ -43,17 +50,39 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log('API called with method:', req.method);
+    console.log('Request body:', req.body);
+    console.log('Environment variables check:', {
+      SMTP_HOST: !!process.env.SMTP_HOST,
+      SMTP_USER: !!process.env.SMTP_USER,
+      SMTP_PASS: !!process.env.SMTP_PASS,
+      COMPANY_EMAIL: !!process.env.COMPANY_EMAIL
+    });
+    console.log('SMTP_HOST value:', process.env.SMTP_HOST);
+    console.log('SMTP_USER value:', process.env.SMTP_USER);
+
+    const requiredEnvVars = ['SMTP_HOST', 'SMTP_USER', 'SMTP_PASS', 'COMPANY_EMAIL'];
+    const missingEnvVars = requiredEnvVars.filter(varName => !process.env[varName]);
+
+    if (missingEnvVars.length > 0) {
+      console.error('Missing environment variables:', missingEnvVars);
+      return res.status(500).json({
+        success: false,
+        message: 'Server configuration error. Please contact administrator.',
+        missingVars: missingEnvVars
+      });
+    }
+
     const { name, email, subject, message } = req.body;
 
-    // Validation
     if (!name || !email || !subject || !message) {
+      console.log('Validation failed - missing fields:', { name: !!name, email: !!email, subject: !!subject, message: !!message });
       return res.status(400).json({
         success: false,
         message: 'All fields are required'
       });
     }
 
-    // Email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({
@@ -62,9 +91,10 @@ export default async function handler(req, res) {
       });
     }
 
+    console.log('Creating transporter...');
     const transporter = createTransporter();
+    console.log('Transporter created successfully');
 
-    // Email content
     const mailOptions = {
       from: process.env.SMTP_USER,
       to: process.env.COMPANY_EMAIL || process.env.SMTP_USER,
@@ -94,7 +124,6 @@ export default async function handler(req, res) {
       `,
     };
 
-    // Auto-reply to the user
     const autoReplyOptions = {
       from: process.env.SMTP_USER,
       to: email,
@@ -120,9 +149,23 @@ export default async function handler(req, res) {
       `,
     };
 
-    // Send both emails
-    await transporter.sendMail(mailOptions);
-    await transporter.sendMail(autoReplyOptions);
+    console.log('Attempting to send main email...');
+    try {
+      const mainEmailResult = await transporter.sendMail(mailOptions);
+      console.log('Main email sent successfully:', mainEmailResult.messageId);
+    } catch (mainEmailError) {
+      console.error('Failed to send main email:', mainEmailError);
+      throw new Error(`Main email failed: ${mainEmailError.message}`);
+    }
+
+    console.log('Attempting to send auto-reply...');
+    try {
+      const autoReplyResult = await transporter.sendMail(autoReplyOptions);
+      console.log('Auto-reply sent successfully:', autoReplyResult.messageId);
+    } catch (autoReplyError) {
+      console.error('Failed to send auto-reply:', autoReplyError);
+      console.log('Auto-reply failed but main email was sent');
+    }
 
     res.status(200).json({
       success: true,
@@ -130,10 +173,14 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Error in contact API:', error);
+    console.error('Error stack:', error.stack);
+    console.error('Error message:', error.message);
+
     res.status(500).json({
       success: false,
-      message: 'Failed to send email. Please try again later.'
+      message: 'Failed to send email. Please try again later.',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 }
