@@ -50,6 +50,21 @@ module.exports = async function handler(req, res) {
       SMTP_PASS: !!process.env.SMTP_PASS,
       COMPANY_EMAIL: !!process.env.COMPANY_EMAIL
     });
+    console.log('SMTP_HOST value:', process.env.SMTP_HOST);
+    console.log('SMTP_USER value:', process.env.SMTP_USER);
+
+    // Check required environment variables
+    const requiredEnvVars = ['SMTP_HOST', 'SMTP_USER', 'SMTP_PASS', 'COMPANY_EMAIL'];
+    const missingEnvVars = requiredEnvVars.filter(varName => !process.env[varName]);
+
+    if (missingEnvVars.length > 0) {
+      console.error('Missing environment variables:', missingEnvVars);
+      return res.status(500).json({
+        success: false,
+        message: 'Server configuration error. Please contact administrator.',
+        missingVars: missingEnvVars
+      });
+    }
 
     const { name, email, subject, message } = req.body;
 
@@ -130,8 +145,13 @@ module.exports = async function handler(req, res) {
     };
 
     // Send both emails
+    console.log('Attempting to send main email...');
     await transporter.sendMail(mailOptions);
+    console.log('Main email sent successfully');
+
+    console.log('Attempting to send auto-reply...');
     await transporter.sendMail(autoReplyOptions);
+    console.log('Auto-reply sent successfully');
 
     res.status(200).json({
       success: true,
