@@ -25,15 +25,15 @@ const Careers = () => {
               building Kenya's future, one project at a time.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Link
+              {/* <Link
                 to="/contact"
                 className="bg-primary-700 text-white font-semibold py-3 px-8 rounded-md shadow-lg hover:bg-primary-800 transition-colors"
               >
                 Apply Now
-              </Link>
+              </Link> */}
               <Link
                 to="/about"
-                className="bg-white text-slate-800 font-semibold py-3 px-8 rounded-md border border-slate-300 hover:bg-slate-50 transition-colors"
+                className="bg-primary-700 text-white font-semibold py-3 px-8 rounded-md border border-slate-300 hover:bg-primary-800 transition-colors"
               >
                 Learn About Us
               </Link>
@@ -128,13 +128,13 @@ const Careers = () => {
       {/* Open Positions */}
       <section className="py-16 bg-primary-50">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-primary-700 mb-4 text-center">
-            Current Openings
-          </h2>
-          <p className="text-slate-600 text-center mb-10">
+          <h1 className="text-3xl font-bold text-primary-700 mb-4 text-center">
+            No Current Openings !!
+          </h1>
+          {/* <p className="text-slate-600 text-center mb-10">
             Explore our current job openings and find the perfect role for you.
-          </p>
-          <div className="space-y-6">
+          </p> */}
+          {/* <div className="space-y-6">
             {[
               {
                 title: "Construction Manager",
@@ -203,12 +203,12 @@ const Careers = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* Application Process */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-slate-800 mb-4 text-center">
             How to Apply
@@ -233,7 +233,7 @@ const Careers = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
