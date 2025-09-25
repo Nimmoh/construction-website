@@ -134,7 +134,7 @@ Our mission is to build lasting relationships with our clients, partners, and co
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-slate-50">
+      {/* <section className="py-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary-700 mb-4">
@@ -162,7 +162,7 @@ Our mission is to build lasting relationships with our clients, partners, and co
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Stats Section */}
       <section className="py-20 bg-primary-700 text-white">
@@ -173,13 +173,13 @@ Our mission is to build lasting relationships with our clients, partners, and co
               Numbers that speak to our commitment and success in the industry.
             </p>
           </div>
-          <div className="grid md:grid-cols-4 gap-8 text-center">
+          <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-accent-400 mb-2">500+</div>
+              <div className="text-4xl font-bold text-accent-400 mb-2">20+</div>
               <div className="text-primary-100">Projects Completed</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-accent-400 mb-2">20+</div>
+              <div className="text-4xl font-bold text-accent-400 mb-2">10+</div>
               <div className="text-primary-100">Years Experience</div>
             </div>
             <div>
@@ -187,8 +187,8 @@ Our mission is to build lasting relationships with our clients, partners, and co
               <div className="text-primary-100">Client Satisfaction</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-accent-400 mb-2">50+</div>
-              <div className="text-primary-100">Team Members</div>
+              {/* <div className="text-4xl font-bold text-accent-400 mb-2">10+</div>
+              <div className="text-primary-100">Team Members</div> */}
             </div>
           </div>
         </div>
