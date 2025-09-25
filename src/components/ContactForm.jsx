@@ -26,7 +26,6 @@ const ContactForm = ()=> {
     let apiEndpoint;
 
     try {
-      // Client-side validation
       if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
         setStatus('error');
         setErrorMessage('Please fill in all required fields.');
@@ -40,7 +39,6 @@ const ContactForm = ()=> {
       console.log('Using API endpoint:', apiEndpoint);
       console.log('Form data being sent:', form);
 
-      // Create enhanced message with additional form data
       const enhancedMessage = `${form.message}
 
 Additional Details:
@@ -63,7 +61,6 @@ ${form.budgetRange ? `Budget Range: ${form.budgetRange}` : ''}`.trim();
 
       console.log('Response status:', response.status);
 
-      // Check if response is ok
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -93,7 +90,6 @@ ${form.budgetRange ? `Budget Range: ${form.budgetRange}` : ''}`.trim();
       console.error('API endpoint used:', apiEndpoint);
       setStatus('error');
 
-      // Set user-friendly error message
       if (err.name === 'TypeError' && err.message.includes('fetch')) {
         setErrorMessage('Network error. Please check your connection and try again.');
       } else if (response?.status === 400) {

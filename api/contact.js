@@ -1,8 +1,15 @@
-const nodemailer = require('nodemailer');
 
-// Create transporter for sending emails
 const createTransporter = () => {
-  return nodemailer.createTransporter({
+  const nodemailer = require('nodemailer');
+
+  console.log('Creating nodemailer transporter with config:', {
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT) || 587,
+    secure: process.env.SMTP_SECURE === 'true',
+    user: process.env.SMTP_USER ? '***' : 'MISSING'
+  });
+
+  return nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: parseInt(process.env.SMTP_PORT) || 587,
     secure: process.env.SMTP_SECURE === 'true',
@@ -10,6 +17,9 @@ const createTransporter = () => {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
+    tls: {
+      rejectUnauthorized: false
+    }
   });
 };
 
@@ -27,13 +37,11 @@ module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
-  // Handle preflight requests
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
   }
 
-  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({
       success: false,
@@ -53,7 +61,6 @@ module.exports = async function handler(req, res) {
     console.log('SMTP_HOST value:', process.env.SMTP_HOST);
     console.log('SMTP_USER value:', process.env.SMTP_USER);
 
-    // Check required environment variables
     const requiredEnvVars = ['SMTP_HOST', 'SMTP_USER', 'SMTP_PASS', 'COMPANY_EMAIL'];
     const missingEnvVars = requiredEnvVars.filter(varName => !process.env[varName]);
 
@@ -68,7 +75,6 @@ module.exports = async function handler(req, res) {
 
     const { name, email, subject, message } = req.body;
 
-    // Validation
     if (!name || !email || !subject || !message) {
       console.log('Validation failed - missing fields:', { name: !!name, email: !!email, subject: !!subject, message: !!message });
       return res.status(400).json({
@@ -77,7 +83,6 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    // Email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({
@@ -86,9 +91,10 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    console.log('Creating transporter...');
     const transporter = createTransporter();
+    console.log('Transporter created successfully');
 
-    // Email content
     const mailOptions = {
       from: process.env.SMTP_USER,
       to: process.env.COMPANY_EMAIL || process.env.SMTP_USER,
@@ -118,7 +124,6 @@ module.exports = async function handler(req, res) {
       `,
     };
 
-    // Auto-reply to the user
     const autoReplyOptions = {
       from: process.env.SMTP_USER,
       to: email,
@@ -144,14 +149,23 @@ module.exports = async function handler(req, res) {
       `,
     };
 
-    // Send both emails
     console.log('Attempting to send main email...');
-    await transporter.sendMail(mailOptions);
-    console.log('Main email sent successfully');
+    try {
+      const mainEmailResult = await transporter.sendMail(mailOptions);
+      console.log('Main email sent successfully:', mainEmailResult.messageId);
+    } catch (mainEmailError) {
+      console.error('Failed to send main email:', mainEmailError);
+      throw new Error(`Main email failed: ${mainEmailError.message}`);
+    }
 
     console.log('Attempting to send auto-reply...');
-    await transporter.sendMail(autoReplyOptions);
-    console.log('Auto-reply sent successfully');
+    try {
+      const autoReplyResult = await transporter.sendMail(autoReplyOptions);
+      console.log('Auto-reply sent successfully:', autoReplyResult.messageId);
+    } catch (autoReplyError) {
+      console.error('Failed to send auto-reply:', autoReplyError);
+      console.log('Auto-reply failed but main email was sent');
+    }
 
     res.status(200).json({
       success: true,
