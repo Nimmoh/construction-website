@@ -4,17 +4,15 @@ import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary-800 text-slate-200 mt-12">
+    <footer className="bg-primary-800 text-slate-200 ">
       <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        {/* Company Info */}
         <div>
           <h2 className="text-lg font-bold text-white">Kambove Enterprises</h2>
           <p className="text-sm mt-2">Eldoret, Kenya</p>
           <p className="text-sm mt-1">Building your vision with quality and trust.</p>
         </div>
 
-        {/* Quick Links */}
         <div>
           <h3 className="text-md font-semibold text-white mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
@@ -25,7 +23,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Social Media */}
         <div>
           <h3 className="text-md font-semibold text-white mb-3">Connect With Us</h3>
           <div className="flex gap-4">
