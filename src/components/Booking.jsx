@@ -14,7 +14,11 @@ const Booking = ()=> {
     setLoading(true);
     
     try {
-      const response = await fetch('http://localhost:3000/api/contact', {
+      const apiEndpoint = process.env.REACT_APP_API_BASE_URL
+        ? `${process.env.REACT_APP_API_BASE_URL}/api/contact`
+        : '/api/contact';
+
+      const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
