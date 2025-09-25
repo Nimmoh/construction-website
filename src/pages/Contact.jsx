@@ -1,8 +1,13 @@
 ﻿import React from "react";
+import { useLocation } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import ContactForm from "../components/ContactForm";
 
 const Contact = () => {
+  const location = useLocation();
+  const preSelectedService = location.state?.preSelectedService;
+  const serviceTitle = location.state?.serviceTitle;
+
   return (
     <>
       {/* Hero Section */}
@@ -28,12 +33,15 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="bg-slate-50 p-8 rounded-lg shadow-lg border border-slate-100">
               <h2 className="text-2xl font-bold text-slate-800 mb-2">
-                Send us a Message
+                {serviceTitle ? `Get Quote for ${serviceTitle}` : 'Send us a Message'}
               </h2>
               <p className="text-sm text-slate-500 mb-6">
-                Fill out the form below and we'll get back to you within 24 hours.
+                {serviceTitle
+                  ? `Get a personalized quote for ${serviceTitle}. Fill out the form below and we'll get back to you within 24 hours.`
+                  : 'Fill out the form below and we\'ll get back to you within 24 hours.'
+                }
               </p>
-              <ContactForm />
+              <ContactForm preSelectedService={preSelectedService} />
             </div>
 
             {/* Contact Information */}

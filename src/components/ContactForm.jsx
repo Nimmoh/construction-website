@@ -1,6 +1,6 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 
-const ContactForm = ()=> {
+const ContactForm = ({ preSelectedService })=> {
   const [form, setForm] = useState({
     name:'',
     email:'',
@@ -8,13 +8,35 @@ const ContactForm = ()=> {
     message:'',
     subject:'',
     projectType:'',
-    budgetRange:''
+    budgetRange:'',
+    customBudget:''
   });
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [budgetType, setBudgetType] = useState('range'); // 'range' or 'custom'
 
   const handleChange = (e)=> setForm({...form, [e.target.name]: e.target.value});
+
+  // Handle custom budget input with number formatting
+  const handleCustomBudgetChange = (e) => {
+    const value = e.target.value;
+    // Remove non-numeric characters except commas
+    const numericValue = value.replace(/[^\d,]/g, '');
+    // Format with commas for thousands
+    const formattedValue = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    setForm({...form, customBudget: formattedValue});
+  };
+
+  // Set pre-selected service when component mounts
+  useEffect(() => {
+    if (preSelectedService) {
+      setForm(prev => ({
+        ...prev,
+        projectType: preSelectedService
+      }));
+    }
+  }, [preSelectedService]);
 
   const handleSubmit = async (e)=> {
     e.preventDefault();
@@ -39,12 +61,29 @@ const ContactForm = ()=> {
       console.log('Using API endpoint:', apiEndpoint);
       console.log('Form data being sent:', form);
 
+      // Determine budget display text
+      const getBudgetText = () => {
+        if (budgetType === 'custom' && form.customBudget) {
+          return `Budget: KSh ${form.customBudget}`;
+        } else if (budgetType === 'range' && form.budgetRange) {
+          const budgetLabels = {
+            'under-100k': 'Under KSh 100,000',
+            '100k-500k': 'KSh 100,000 - 500,000',
+            '500k-1m': 'KSh 500,000 - 1,000,000',
+            '1m-5m': 'KSh 1,000,000 - 5,000,000',
+            'over-5m': 'Over KSh 5,000,000'
+          };
+          return `Budget Range: ${budgetLabels[form.budgetRange] || form.budgetRange}`;
+        }
+        return '';
+      };
+
       const enhancedMessage = `${form.message}
 
 Additional Details:
 ${form.phone ? `Phone: ${form.phone}` : ''}
 ${form.projectType ? `Project Type: ${form.projectType}` : ''}
-${form.budgetRange ? `Budget Range: ${form.budgetRange}` : ''}`.trim();
+${getBudgetText()}`.trim();
 
       response = await fetch(apiEndpoint, {
         method: 'POST',
@@ -77,8 +116,10 @@ ${form.budgetRange ? `Budget Range: ${form.budgetRange}` : ''}`.trim();
           message:'',
           subject:'',
           projectType:'',
-          budgetRange:''
+          budgetRange:'',
+          customBudget:''
         });
+        setBudgetType('range');
       } else {
         setStatus('error');
         setErrorMessage(data.message || 'Failed to send message. Please try again.');
@@ -173,24 +214,83 @@ ${form.budgetRange ? `Budget Range: ${form.budgetRange}` : ''}`.trim();
           <option value="renovation">Renovation</option>
           <option value="materials">Construction Materials</option>
           <option value="consultation">Consultation</option>
+          <option value="aluminum-installation">Aluminum Doors & Windows Installation</option>
+          <option value="hardware-installation">Door & Window Accessories Installation</option>
+          <option value="shower-installation">Shower Cabinet Installation</option>
+          <option value="concrete-installation">Concrete Block Installation</option>
+          <option value="brick-installation">Brick Wall & Retaining Wall Installation</option>
+          <option value="general-installation">General Installation Services</option>
         </select>
       </div>
       <div>
         <label className="block text-sm font-medium text-slate-700 mb-1">
-          Budget Range
+          Budget
         </label>
-        <select
-          name="budgetRange"
-          value={form.budgetRange}
-          onChange={handleChange}
-          className="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-        >
-          <option value="">Select budget range</option>
-          <option value="under-100k">Under KSh 100,000</option>
-          <option value="100k-500k">KSh 100,000 - 500,000</option>
-          <option value="500k-1m">KSh 500,000 - 1,000,000</option>
-          <option value="over-1m">Over KSh 1,000,000</option>
-        </select>
+
+        {/* Budget Type Toggle */}
+        <div className="flex gap-4 mb-3">
+          <label className="flex items-center">
+            <input
+              type="radio"
+              name="budgetType"
+              value="range"
+              checked={budgetType === 'range'}
+              onChange={(e) => setBudgetType(e.target.value)}
+              className="mr-2 text-primary-600 focus:ring-primary-500"
+            />
+            <span className="text-sm text-slate-700">Select from range</span>
+          </label>
+          <label className="flex items-center">
+            <input
+              type="radio"
+              name="budgetType"
+              value="custom"
+              checked={budgetType === 'custom'}
+              onChange={(e) => setBudgetType(e.target.value)}
+              className="mr-2 text-primary-600 focus:ring-primary-500"
+            />
+            <span className="text-sm text-slate-700">Enter custom amount</span>
+          </label>
+        </div>
+
+        {/* Budget Range Dropdown */}
+        {budgetType === 'range' && (
+          <select
+            name="budgetRange"
+            value={form.budgetRange}
+            onChange={handleChange}
+            className="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+          >
+            <option value="">Select budget range</option>
+            <option value="under-100k">Under KSh 100,000</option>
+            <option value="100k-500k">KSh 100,000 - 500,000</option>
+            <option value="500k-1m">KSh 500,000 - 1,000,000</option>
+            <option value="1m-5m">KSh 1,000,000 - 5,000,000</option>
+            <option value="over-5m">Over KSh 5,000,000</option>
+          </select>
+        )}
+
+        {/* Custom Budget Input */}
+        {budgetType === 'custom' && (
+          <div>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500 font-medium">
+                KSh
+              </span>
+              <input
+                type="text"
+                name="customBudget"
+                value={form.customBudget}
+                onChange={handleCustomBudgetChange}
+                placeholder="Enter your budget amount (e.g., 500,000)"
+                className="w-full pl-12 pr-3 py-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              />
+            </div>
+            <p className="text-xs text-slate-500 mt-1">
+              Enter numbers only. Commas will be added automatically.
+            </p>
+          </div>
+        )}
       </div>
       <div>
         <label className="block text-sm font-medium text-slate-700 mb-1">
