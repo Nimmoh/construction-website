@@ -13,8 +13,7 @@ const createTransporter = () => {
   });
 };
 
-export default async function handler(req, res) {
-  // Set CORS headers
+module.exports = async function handler(req, res) {
   const allowedOrigins = process.env.ALLOWED_ORIGINS 
     ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
     : ['http://localhost:3000', 'https://construction-website-black.vercel.app'];
@@ -43,10 +42,20 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log('API called with method:', req.method);
+    console.log('Request body:', req.body);
+    console.log('Environment variables check:', {
+      SMTP_HOST: !!process.env.SMTP_HOST,
+      SMTP_USER: !!process.env.SMTP_USER,
+      SMTP_PASS: !!process.env.SMTP_PASS,
+      COMPANY_EMAIL: !!process.env.COMPANY_EMAIL
+    });
+
     const { name, email, subject, message } = req.body;
 
     // Validation
     if (!name || !email || !subject || !message) {
+      console.log('Validation failed - missing fields:', { name: !!name, email: !!email, subject: !!subject, message: !!message });
       return res.status(400).json({
         success: false,
         message: 'All fields are required'
@@ -130,10 +139,14 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Error in contact API:', error);
+    console.error('Error stack:', error.stack);
+    console.error('Error message:', error.message);
+
     res.status(500).json({
       success: false,
-      message: 'Failed to send email. Please try again later.'
+      message: 'Failed to send email. Please try again later.',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 }
