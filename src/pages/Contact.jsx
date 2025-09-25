@@ -65,7 +65,7 @@ const Contact = () => {
                     <Mail className="text-green-700 w-6 h-6 mt-1" />
                     <div>
                       <p className="font-semibold">Email</p>
-                      <p className="text-gray-600">info@kamboveenteprises.com</p>
+                      <p className="text-gray-600">info@kambovent.co.ke</p>
                       <p className="text-gray-500 text-sm">Online support 24/7</p>
                     </div>
                   </div>
