@@ -23,7 +23,7 @@ export default function MobileMenuBar({navLinks}){
               <Link
                 key={to}
                 to={to}
-                className="text-slate-700 hover:text-primary-700 py-2"
+                className="text-slate-800 hover:text-primary-700 py-2 font-semibold text-base"
                 onClick={() => setIsOpen(false)}
               >
                 {label}
@@ -31,7 +31,7 @@ export default function MobileMenuBar({navLinks}){
             ))}
             <Link
               to="/contact"
-              className="bg-primary-700 text-white px-4 py-2 rounded-md font-medium mt-2"
+              className="bg-primary-700 text-white px-4 py-2 rounded-md font-bold mt-2"
               onClick={() => setIsOpen(false)}
             >
               Get a Quote

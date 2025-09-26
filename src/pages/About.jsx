@@ -32,12 +32,12 @@ const About = () => {
     <>
       {/* Hero Section */}
       <section className="text-center py-24 bg-white">
-        <span className="bg-accent-100 text-accent-600 px-4 py-1 rounded-full text-sm font-semibold tracking-wide">
+        <span className="bg-accent-100 text-accent-900 px-4 py-1 rounded-full text-sm font-bold tracking-wide">
           About Kambove Enterprises
         </span>
         <h1 className="mt-6 text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
           Building Excellence for{" "}
-          <span className="text-primary-700">Over 20 Years</span>
+          <span className="text-primary-700">Over 10 Years</span>
         </h1>
         <p className="mt-6 max-w-3xl mx-auto text-lg text-slate-600">
           We are a business specialised in construction and supply of

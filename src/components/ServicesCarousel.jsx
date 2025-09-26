@@ -32,7 +32,7 @@ const ServicesCarousel = () => {
       description: "Expert installation of shower cabinets with proper waterproofing and drainage systems.",
       features: ["Waterproof Sealing", "Proper Drainage", "Modern Design"],
       // icon: <CheckCircle className="w-8 h-8" />,
-      image: "/images/shower_cabinet.jpeg"
+      image: "/images/shower_cabinet2.jpg"
     },
     {
       id: 4,

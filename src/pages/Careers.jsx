@@ -10,15 +10,15 @@ const Careers = () => {
         <div
           className="relative mb-12 py-20 bg-cover bg-center text-center"
           style={{
-            backgroundImage: `url('/images/career1.jpg')`,
+            backgroundImage: `url('/images/about_image.jpeg')`,
           }}
         >
           <div className="absolute inset-0 bg-primary-700/80"></div>
           <div className="relative z-10 text-white max-w-4xl mx-auto px-4">
-            <p className="text-sm font-semibold text-accent-400 uppercase mb-2">Join Our Team</p>
+            <p className="text-sm font-semibold text-accent-600 uppercase mb-2">Join Our Team</p>
             <h1 className="text-5xl font-extrabold text-white mb-4">
               Build Your Career with{" "}
-              <span className="text-accent-400">Kambove Enterprises</span>
+              <span className="text-accent-600">Kambove Enterprises</span>
             </h1>
             <p className="text-lg text-white max-w-2xl mx-auto leading-relaxed">
               Join a dynamic team of construction professionals and be part of

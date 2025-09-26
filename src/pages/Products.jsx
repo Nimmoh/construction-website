@@ -44,7 +44,7 @@ const Products = () => {
       {/* Hero Section */}
       <section className="bg-primary-50 py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <p className="text-sm font-semibold text-accent-600 uppercase mb-2">
+          <p className="text-sm font-bold text-accent-900 uppercase mb-2">
             Quality Construction Materials
           </p>
           <h1 className="text-4xl font-extrabold text-slate-900">

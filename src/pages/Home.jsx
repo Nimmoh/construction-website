@@ -10,13 +10,13 @@ const Home = () => {
       <section
         className="relative h-screen bg-cover bg-center"
         style={{
-          backgroundImage: `url('/images/barriers.jpg')`, 
+          backgroundImage: `url('/images/worker_images.jpeg')`, 
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-primary-700/90 to-primary-600/70"></div>
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6">
           <h1 className="text-5xl md:text-7xl font-extrabold leading-tight">
-            Building Your <span className="text-accent-400">Vision Into Reality</span>
+            Building Your <span className="text-accent-600">Vision Into Reality</span>
           </h1>
           <p className="mt-6 text-lg md:text-xl max-w-2xl">
             <br></br>
@@ -33,7 +33,7 @@ Our innovation meets your vision. Let's create something remarkable, together.
             </Link>
             <Link
               to="/projects"
-              className="bg-accent-500 hover:bg-accent-600 px-8 py-3 rounded-md font-semibold text-white transition"
+              className="bg-accent-600 hover:bg-accent-600 px-8 py-3 rounded-md font-semibold text-white transition"
             >
               View Projects
             </Link>
@@ -110,14 +110,13 @@ Our innovation meets your vision. Let's create something remarkable, together.
           </div>
           <Link
             to="/projects"
-            className="inline-block mt-6 text-accent-600 font-semibold hover:underline"
+            className="inline-block mt-8 text-accent-900 font-bold hover:underline"
           >
             View All Projects 
           </Link>
         </div>
       </section>
 
-      {/* Why Choose Us */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-12 text-primary-700">
@@ -167,7 +166,7 @@ Our innovation meets your vision. Let's create something remarkable, together.
           </p>
           <Link
             to="/contact"
-            className="bg-accent-500 hover:bg-accent-600 text-white px-8 py-4 rounded-md font-semibold transition"
+            className="bg-accent-600 hover:bg-accent-600 text-white px-8 py-4 rounded-md font-semibold transition"
           >
             Get Free Quote
           </Link>
