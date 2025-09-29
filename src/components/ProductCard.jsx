@@ -13,7 +13,7 @@ export default function ProductCard({product}){
                     Available
                   </span>
                 )} */}
-                 {!product.inStock && (
+                 {/* {!product.inStock && (
                     <span className="absolute top-3 right-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded">
                       Out of Stock
                     </span>
@@ -23,18 +23,18 @@ export default function ProductCard({product}){
                     <span className="absolute top-3 left-3 bg-accent-600 text-white text-xs font-semibold px-2 py-1 rounded">
                       Sale
                     </span>
-                  )}
+                  )} */}
               </div>
               <div className="p-5">
                 <h3 className="text-lg font-bold text-gray-900">{product.title}</h3>
-                <p className="text-primary-700 font-semibold text-lg mt-1">
+                {/* <p className="text-primary-700 font-semibold text-lg mt-1">
                     {product.price}
                     {product.originalPrice !== product.price && (
                       <span className="text-sm text-slate-500 font-normal line-through ml-2">
                         {product.originalPrice}
                       </span>
                     )}
-                  </p>
+                  </p> */}
 
                 <p className="text-gray-600 mt-2 text-sm">{product.desc}</p>
 
