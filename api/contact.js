@@ -33,18 +33,25 @@ module.exports = async function handler(req, res) {
   console.log('Request origin:', origin);
   console.log('Allowed origins:', allowedOrigins);
 
-  // Set CORS headers
+  // Set CORS headers - Allow all Vercel deployments and configured origins
+  let corsAllowed = false;
+
   if (allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
-    console.log('CORS allowed for origin:', origin);
+    corsAllowed = true;
+    console.log('CORS allowed for configured origin:', origin);
+  } else if (origin && origin.includes('vercel.app')) {
+    // Allow all Vercel preview and production deployments
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    corsAllowed = true;
+    console.log('CORS allowed for Vercel deployment:', origin);
+  } else if (origin && (origin.includes('kambovent.co.ke') || origin.includes('localhost'))) {
+    // Allow your custom domain and localhost
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    corsAllowed = true;
+    console.log('CORS allowed for custom domain/localhost:', origin);
   } else {
-    // Fallback: allow the request origin if it's from Vercel
-    if (origin && origin.includes('vercel.app')) {
-      res.setHeader('Access-Control-Allow-Origin', origin);
-      console.log('CORS allowed for Vercel origin:', origin);
-    } else {
-      console.warn('CORS blocked for origin:', origin);
-    }
+    console.warn('CORS blocked for origin:', origin);
   }
 
   res.setHeader('Access-Control-Allow-Credentials', true);
