@@ -56,6 +56,10 @@ const ContactForm = ({ preSelectedService })=> {
 
       console.log('Using API endpoint:', apiEndpoint);
       console.log('Form data being sent:', form);
+      console.log('Environment check:', {
+        REACT_APP_API_BASE_URL: process.env.REACT_APP_API_BASE_URL,
+        NODE_ENV: process.env.NODE_ENV
+      });
 
       const getBudgetText = () => {
         if (budgetType === 'custom' && form.customBudget) {
@@ -94,9 +98,23 @@ ${getBudgetText()}`.trim();
       });
 
       console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        let errorData;
+        try {
+          errorData = await response.json();
+          console.error('Error response JSON:', errorData);
+        } catch (e) {
+          const errorText = await response.text();
+          console.error('Error response text:', errorText);
+          throw new Error(`HTTP error! status: ${response.status}, body: ${errorText}`);
+        }
+
+        // Throw error with detailed information
+        const errorMessage = errorData.error || errorData.message || 'Unknown error';
+        const errorDetails = errorData.errorCode ? ` (Code: ${errorData.errorCode})` : '';
+        throw new Error(`${errorMessage}${errorDetails}`);
       }
 
       const data = await response.json();

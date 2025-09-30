@@ -176,11 +176,16 @@ module.exports = async function handler(req, res) {
     console.error('Error in contact API:', error);
     console.error('Error stack:', error.stack);
     console.error('Error message:', error.message);
+    console.error('Error code:', error.code);
+    console.error('Error response:', error.response);
 
+    // Send detailed error for debugging
     res.status(500).json({
       success: false,
       message: 'Failed to send email. Please try again later.',
-      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+      error: error.message,
+      errorCode: error.code,
+      errorDetails: error.response || 'No additional details'
     });
   }
 }
