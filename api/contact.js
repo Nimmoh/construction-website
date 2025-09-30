@@ -24,15 +24,29 @@ const createTransporter = () => {
 };
 
 module.exports = async function handler(req, res) {
-  const allowedOrigins = process.env.ALLOWED_ORIGINS 
+  const allowedOrigins = process.env.ALLOWED_ORIGINS
     ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
     : ['http://localhost:3000', 'https://construction-website-black.vercel.app'];
 
   const origin = req.headers.origin;
+
+  console.log('Request origin:', origin);
+  console.log('Allowed origins:', allowedOrigins);
+
+  // Set CORS headers
   if (allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
+    console.log('CORS allowed for origin:', origin);
+  } else {
+    // Fallback: allow the request origin if it's from Vercel
+    if (origin && origin.includes('vercel.app')) {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+      console.log('CORS allowed for Vercel origin:', origin);
+    } else {
+      console.warn('CORS blocked for origin:', origin);
+    }
   }
-  
+
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
