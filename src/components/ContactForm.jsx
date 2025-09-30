@@ -80,18 +80,35 @@ ${form.phone ? `Phone: ${form.phone}` : ''}
 ${form.projectType ? `Project Type: ${form.projectType}` : ''}
 ${getBudgetText()}`.trim();
 
-      response = await fetch(apiEndpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          email: form.email.trim(),
-          subject: form.subject.trim() || 'Contact Form Submission',
-          message: enhancedMessage
-        }),
-      });
+const API_URL = process.env.REACT_APP_API_BASE_URL;
+
+const handleSubmit = async (formData) => {
+  try {
+    const response = await fetch(`${API_URL}/api/contact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
+    
+    const result = await response.json();
+  } catch (error) {
+  }
+};
+
+      // response = await fetch(`${API_URL}/api/contact`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     name: form.name.trim(),
+      //     email: form.email.trim(),
+      //     subject: form.subject.trim() || 'Contact Form Submission',
+      //     message: enhancedMessage
+      //   }),
+      // });
 
       console.log('Response status:', response.status);
 
