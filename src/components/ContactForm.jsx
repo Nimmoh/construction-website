@@ -18,17 +18,13 @@ const ContactForm = ({ preSelectedService })=> {
 
   const handleChange = (e)=> setForm({...form, [e.target.name]: e.target.value});
 
-  // Handle custom budget input with number formatting
   const handleCustomBudgetChange = (e) => {
     const value = e.target.value;
-    // Remove non-numeric characters except commas
     const numericValue = value.replace(/[^\d,]/g, '');
-    // Format with commas for thousands
     const formattedValue = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     setForm({...form, customBudget: formattedValue});
   };
 
-  // Set pre-selected service when component mounts
   useEffect(() => {
     if (preSelectedService) {
       setForm(prev => ({
@@ -61,7 +57,6 @@ const ContactForm = ({ preSelectedService })=> {
       console.log('Using API endpoint:', apiEndpoint);
       console.log('Form data being sent:', form);
 
-      // Determine budget display text
       const getBudgetText = () => {
         if (budgetType === 'custom' && form.customBudget) {
           return `Budget: KSh ${form.customBudget}`;
@@ -227,7 +222,6 @@ ${getBudgetText()}`.trim();
           Budget
         </label>
 
-        {/* Budget Type Toggle */}
         <div className="flex gap-4 mb-3">
           <label className="flex items-center">
             <input
@@ -253,7 +247,6 @@ ${getBudgetText()}`.trim();
           </label>
         </div>
 
-        {/* Budget Range Dropdown */}
         {budgetType === 'range' && (
           <select
             name="budgetRange"
@@ -270,7 +263,6 @@ ${getBudgetText()}`.trim();
           </select>
         )}
 
-        {/* Custom Budget Input */}
         {budgetType === 'custom' && (
           <div>
             <div className="relative">
