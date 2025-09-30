@@ -79,7 +79,8 @@ const Products = () => {
                 <option value="all">All Categories</option>
                 <option value="doors">Doors</option>
                 <option value="windows">Windows</option>
-                <option value="materials">Materials</option>
+                <option value="materials">Building Materials</option>
+                <option value="sanitary ware">Sanitary Ware</option>
               </select>
               {/* <button className="flex items-center px-4 py-2 rounded-md border border-slate-300 text-slate-600 hover:bg-slate-100">
                 <ShoppingCart className="w-4 h-4 mr-2" />
