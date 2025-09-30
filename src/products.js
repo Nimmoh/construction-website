@@ -8,7 +8,7 @@
       image: "/images/shower_cabinets.jpeg",
       rating: 4.8,
       reviews: 124,
-      category: "windows",
+      category: "sanitary ware",
       inStock: true,
     },
     {
@@ -41,7 +41,7 @@
       price: "KSh 80",
       originalPrice: "KSh 95",
       desc: "Traditional brick tiles for authentic construction look.",
-      image: "/images/brick_walls.jpeg",
+      image: "/images/brickslip.jpg",
       rating: 4.5,
       reviews: 45,
       category: "materials",
@@ -56,7 +56,7 @@
       image: "/images/retaining_concrete.jpeg",
       rating: 4.9,
       reviews: 156,
-      category: "doors",
+      category: "Doors",
       inStock: true,
     },
     {
