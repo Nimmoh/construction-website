@@ -1,7 +1,8 @@
 ﻿import React from "react";
 import { Link } from "react-router-dom";
 import { Clock, CheckCircle, Shield } from "lucide-react";
-import ServicesCarousel from "../components/ServicesCarousel";
+import ServiceCarouselCard from "../components/ServiceCarouselCard";
+import services from "../services";
 
 const Home = () => {
   return (
@@ -76,7 +77,8 @@ Our innovation meets your vision. Let's create something remarkable, together.
       </section>
 
       {/* Installation Services Carousel */}
-      <ServicesCarousel />
+      <ServiceCarouselCard />
+      
 
       {/* Projects Gallery */}
       <section className="py-20 bg-white">
