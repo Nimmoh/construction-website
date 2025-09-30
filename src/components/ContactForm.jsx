@@ -80,7 +80,7 @@ ${form.phone ? `Phone: ${form.phone}` : ''}
 ${form.projectType ? `Project Type: ${form.projectType}` : ''}
 ${getBudgetText()}`.trim();
 
-      response = await fetch(`${API_URL}/api/contact`, {
+      response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -122,8 +122,14 @@ ${getBudgetText()}`.trim();
       }
     } catch (err) {
       console.error('Error sending message:', err);
+      console.error('Error details:', {
+        message: err.message,
+        name: err.name,
+        stack: err.stack
+      });
       console.error('Response status:', response?.status);
       console.error('API endpoint used:', apiEndpoint);
+
       setStatus('error');
 
       if (err.name === 'TypeError' && err.message.includes('fetch')) {
@@ -132,8 +138,10 @@ ${getBudgetText()}`.trim();
         setErrorMessage('Invalid form data. Please check your inputs.');
       } else if (response?.status === 500) {
         setErrorMessage('Server error. Please try again later.');
+      } else if (response?.status === 404) {
+        setErrorMessage('API endpoint not found. Please contact support.');
       } else {
-        setErrorMessage('An unexpected error occurred. Please try again.');
+        setErrorMessage(`Error: ${err.message || 'An unexpected error occurred. Please try again.'}`);
       }
     } finally {
       setLoading(false);
