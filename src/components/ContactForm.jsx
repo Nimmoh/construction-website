@@ -1,6 +1,8 @@
 ﻿import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ContactForm = ({ preSelectedService })=> {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     name:'',
     email:'',
@@ -134,6 +136,11 @@ ${getBudgetText()}`.trim();
           customBudget:''
         });
         setBudgetType('range');
+
+        // Redirect to homepage after 2 seconds
+        setTimeout(() => {
+          navigate('/');
+        }, 2000);
       } else {
         setStatus('error');
         setErrorMessage(data.message || 'Failed to send message. Please try again.');
@@ -339,6 +346,9 @@ ${getBudgetText()}`.trim();
           </p>
           <p className="text-green-600 text-center text-sm mt-1">
             We'll get back to you within 24-48 hours.
+          </p>
+          <p className="text-green-600 text-center text-sm mt-2 font-medium">
+            Redirecting to homepage in 2 seconds...
           </p>
         </div>
       )}
