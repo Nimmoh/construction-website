@@ -1,0 +1,26 @@
+# React App Environment Variables
+
+# API Configuration (Optional - only if using separate backend)
+# For local development, use Express server
+REACT_APP_API_BASE_URL=https://kambove-backend.vercel.app
+# For Vercel deployment, comment out the line above
+
+# Email Configuration for Vercel Serverless Functions
+# Use the settings from your cPanel configuration
+SMTP_HOST=mail.kambovent.co.ke
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=info@kambovent.co.ke
+SMTP_PASS=Kambove@2025
+COMPANY_EMAIL=info@kambovent.co.ke
+COMPANY_NAME=Kambove Enterprises
+COMPANY_PHONE=+254714312234
+SEND_CONFIRMATION_EMAIL=true
+EMAIL_FROM_NAME=Kambove Enterprises
+ALLOWED_ORIGINS=http://localhost:3000,https://kambovent.co.ke/,https://www.kambovent.co.ke/,https://kambove-backend.vercel.app
+
+# Alternative Non-SSL Configuration (if SSL doesn't work)
+# SMTP_HOST=mail.kambovent.co.ke
+# SMTP_PORT=587
+# SMTP_SECURE=false
+# SMTP_USER=info@kambovent.co.ke
