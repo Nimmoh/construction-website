@@ -1,0 +1,16 @@
+
+# Allow all crawlers full access
+User-agent: *
+Allow: /
+
+# Disallow sensitive or unnecessary routes
+Disallow: /admin/
+Disallow: /backend/
+Disallow: /config/
+Disallow: /node_modules/
+Disallow: /build/
+Disallow: /scripts/
+Disallow: /private/
+
+# Sitemap location (important for SEO)
+Sitemap: https://kambovent.co.ke/sitemap.xml
