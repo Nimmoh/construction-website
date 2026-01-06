@@ -20,7 +20,7 @@ export default function Navbar  ()  {
         <Link to="/" className="flex items-center gap-4">
           <img src="/images/logo.jpeg" alt="kambove Enterprises Logo" className="h-16 w-24 md:h-20 md:w-28" />
           <div className="font-bold text-primary-900 text-xl md:text-2xl">
-            Kambove <span className="text-accent-900">Enterprises</span>
+            Kambove <span className="text-accent-900">Enterprises Limited</span>
           </div>
         </Link>
           <DesktopMenuBar navLinks={navLinks} />
